@@ -10,15 +10,7 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resource :customers
-  resource :addresses
-  resource :caseworkers
-  resource :insurances
-  resource :systems
-  resource :system_types
-  resource :transponder_types
-  resource :regions
-  resource :billing_intervals
+  resources :customers, :addresses, :caseworkers, :insurances, :systems, :system_types, :transponder_types, :regions, :billing_intervals
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
