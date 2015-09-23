@@ -1,4 +1,4 @@
-class AddressController < ApplicationController
+class RegionsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index

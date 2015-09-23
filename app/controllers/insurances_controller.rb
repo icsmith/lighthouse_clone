@@ -1,4 +1,4 @@
-class TransponderTypeController < ApplicationController
+class InsurancesController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index

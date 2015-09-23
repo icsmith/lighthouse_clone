@@ -1,4 +1,4 @@
-class BillingIntervalController < ApplicationController
+class BillingIntervalsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index

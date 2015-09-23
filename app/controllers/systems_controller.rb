@@ -1,4 +1,4 @@
-class InsuranceController < ApplicationController
+class SystemsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index

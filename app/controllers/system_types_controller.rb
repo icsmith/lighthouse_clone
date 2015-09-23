@@ -1,4 +1,4 @@
-class CustomerController < ApplicationController
+class SystemTypesController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index

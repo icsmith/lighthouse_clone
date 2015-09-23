@@ -1,4 +1,4 @@
-class CaseworkerController < ApplicationController
+class CaseworkersController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
