@@ -1,4 +1,15 @@
 <h1>Show page</h1>
-<%= @customer.last_name%>
+<% for attribute in @customer.attributes.keys %>
+	<%unless @customer.attributes[attribute]%>
+	<i><b>
+	<%end%>
+  <li><%= attribute.humanize %>: <%= @customer.attributes[attribute].to_s %>
+  <%unless @customer.attributes[attribute]%>
+	Missing</i></b>
+	<%end%></li>
+<% end %>
+<br>
+<%= @customer.addresses.first.attributes %>
+<br><br>
 <%= link_to "Service check list", page_path(@customer.id)+"/service_check_list"%>
 
