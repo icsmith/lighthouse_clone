@@ -29,4 +29,8 @@ class CustomersController < ApplicationController
 
 	end
 
+	def service_check_list
+		@customer = Customer.find(params[:id])
+	end
+
 end

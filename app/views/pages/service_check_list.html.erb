@@ -1,0 +1,14 @@
+<center>SERVICE CHECK LIST #</center>
+<br>
+<center>Date of Call: </center>
+<br>
+Customer Name: <%= @customer.first_name << " " << @customer.last_name %>
+<br>
+Language: <%= @customer.language %><br>
+Address: 
+<% @customer.addresses.each do |address| %>
+<%= address.address_1<<"\t"<<address.city<<" "<<address.state<<" "<<address.zip %> <br>
+Phone #:
+<%= address.phone %>
+<br>
+<% end %>

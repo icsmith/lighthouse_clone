@@ -10,7 +10,13 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :customers, :addresses, :caseworkers, :insurances, :systems, :system_types, :transponder_types, :regions, :billing_intervals
+
+  resources :customers, :addresses, :caseworkers, :insurances, :systems, :system_types, :transponder_types, :regions, :billing_intervals, :pages
+
+  # Customer controller routes
+
+  get 'pages/:id/service_check_list', to: 'pages#service_check_list'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
