@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # Customer controller routes
 
   get 'pages/:id/service_check_list', to: 'pages#service_check_list'
+  get 'customers/:id/destroy' => 'customers#destroy', :as => :customer_destroy
 
 
   # Example of regular route:

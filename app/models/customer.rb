@@ -9,4 +9,5 @@ class Customer < ActiveRecord::Base
 	belongs_to :region
 	accepts_nested_attributes_for :addresses
 	accepts_nested_attributes_for :system
+
 end
