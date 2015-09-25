@@ -15,6 +15,6 @@
 <i><b>Missing address</i></b>
 <% end%>
 <br><br>
-<%= link_to "Service check list", page_path(@customer.id)+"/service_check_list"%>
+<%= link_to "Service check list", form_path(@customer.id)+"/service_check_list"%>
 <%= link_to "Edit this customer", edit_customer_path %>
 <%= link_to "Delete this customer", customer_destroy_path, data: {confirm: "Are you sure?"} %>

@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   root "home#index"
 
 
-  resources :customers, :addresses, :caseworkers, :insurances, :systems, :system_types, :transponder_types, :regions, :billing_intervals, :pages
+  resources :customers, :addresses, :caseworkers, :insurances, :systems, :system_types, :transponder_types, :regions, :billing_intervals, :forms
 
   # Customer controller routes
 
-  get 'pages/:id/service_check_list', to: 'pages#service_check_list'
+  get 'forms/:id/service_check_list', to: 'forms#service_check_list'
   get 'customers/:id/destroy' => 'customers#destroy', :as => :customer_destroy
 
 
