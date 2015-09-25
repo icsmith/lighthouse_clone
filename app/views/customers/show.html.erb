@@ -9,7 +9,11 @@
 	<%end%></li>
 <% end %>
 <br>
+<% if @customer.addresses.first %>
 <%= @customer.addresses.first.attributes %>
+<% else %>
+<i><b>Missing address</i></b>
+<% end%>
 <br><br>
 <%= link_to "Service check list", page_path(@customer.id)+"/service_check_list"%>
 
