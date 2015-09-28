@@ -8,6 +8,11 @@ class CustomersController < ApplicationController
 
 	def index
 		@customers = Customer.all
+		if params[:search]
+		    @customers = Customer.search(params[:search]).order("created_at DESC")
+		else
+		    @customers = Customer.all.order('created_at DESC')
+		end
 	end
 
 	def show
@@ -58,6 +63,6 @@ class CustomersController < ApplicationController
 	private
 
 	def customer_params
-	  params.require(:customer).permit(:first_name, :last_name, :dob, :sex)
+	  params.require(:customer).permit(:first_name, :last_name, :dob, :sex, :middle_initial, :language, :memo, :status, :status_note, :client_central_station_account_number, :install_date, :cancel_date, :initial_contact_autorization_date)
 	end
 end

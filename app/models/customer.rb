@@ -10,4 +10,11 @@ class Customer < ActiveRecord::Base
 	accepts_nested_attributes_for :addresses
 	accepts_nested_attributes_for :system
 
+	def self.search(search)
+		
+		where("first_name LIKE ?", "%#{search}%") 
+		where("last_name LIKE ?", "%#{search}%")
+		# where("client_central_station_account_number = ?",  "%#{search}%")
+
+	end
 end

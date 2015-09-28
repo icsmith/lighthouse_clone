@@ -1,7 +1,1 @@
-<%= form_for @customer, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
-  First name <%= f.text_field :first_name %><br>
-  Last name<%= f.text_field :last_name %><br>
-  Sex <%= f.text_field :sex %> <br>
-  DOB <%= f.text_field :dob %> <br>
-  <%= f.submit "Update" %>
-<% end %>
+<%= render 'form', action: "update" %>
