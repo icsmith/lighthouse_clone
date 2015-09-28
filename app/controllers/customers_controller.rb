@@ -20,7 +20,7 @@ class CustomersController < ApplicationController
 
 	def create
 		@customer = Customer.create(customer_params)
-		if @customer.errors.messages
+		if @customer.errors.messages.count > 0
 			flash[:notice] = @customer.errors.messages.to_s.humanize
 			redirect_to new_customer_path
 		else
@@ -36,11 +36,12 @@ class CustomersController < ApplicationController
 
 	def update
 	
-		if @customer.errors.messages
+		if @customer.errors.messages.count > 0
 			flash[:notice] = "Error "<< @customer.errors.messages.to_s.humanize
 			redirect_to customer_path
 		else
 			flash[:notice] = "Customer updated"
+			@customer.update(customer_params)
 			redirect_to customer_path
 		end
 	end
