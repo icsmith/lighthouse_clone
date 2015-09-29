@@ -11,10 +11,17 @@ class Customer < ActiveRecord::Base
 	accepts_nested_attributes_for :system
 
 	def self.search(search)
+		if search
+			num = search.to_i
+			where("first_name LIKE :search 
+				OR last_name LIKE :search
+				OR client_central_station_account_number = :num", 
+				search: "%#{search}%", num: num)
+		end
+
+		# where("last_name LIKE ?", "%#{search}%")
 		
-		where("first_name LIKE ?", "%#{search}%") 
-		where("last_name LIKE ?", "%#{search}%")
-		# where("client_central_station_account_number = ?",  "%#{search}%")
+		# Item.where('game_name LIKE :search OR genre LIKE :search OR console LIKE :search', search: "%#{search}%")
 
 	end
 end
