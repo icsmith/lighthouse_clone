@@ -1,5 +1,6 @@
-<h1>Show page</h1>
+<!-- Show details of particular customer -->
 <%= link_to "Back to customers", customers_path%>
+<br><br>
 
 <!-- Outputs customer info -->
 <% for attribute in @customer.attributes.keys %>
@@ -25,7 +26,9 @@
 <br><br>
 
 <!-- Customer actions -->
+<div id = "footer">
 <%= link_to "Service check list", form_path(@customer.id)+"/service_check_list"%>
 <%= link_to "Edit this customer", edit_customer_path %>
 <%= link_to "Delete this customer", customer_destroy_path, data: {confirm: "Are you sure?"} %>
 <%= link_to "Add a new address", new_customer_address_path(@customer) %>
+</div>

@@ -1,3 +1,4 @@
+<!-- Display all customers -->
 <h1>Customers</h1>
 <!-- search form -->
 <%= search_form_for @q do |f| %>
@@ -7,17 +8,23 @@
 <% end %>
 
 <!-- search results -->
-<ul>
-	<% if @customers.present? %>
+	
+<% if @customers.present? %>
+	<table>
 		<% @customers.each do |customer| %>
-		<li><%= link_to [customer.first_name, customer.last_name].join(' '), customer%></li>
-	<%end %>
-</ul>
+			<tr>
+				<td><%= link_to [customer.first_name, customer.last_name].join(' '), customer%></td>
+			</tr>
+		<%end %>
+	</table>
+
+
 <!-- Failed search -->
 <% else %>
 	<p>There are no customers containing the term(s) <%= params[:search] %>.</p>
 <% end %>
 
+<br><br>
 
 <!-- Add to the database -->
-<%= link_to "Add New Customer", new_customer_path %>
+<div id = "footer"><%= link_to "Add New Customer", new_customer_path %></div>
