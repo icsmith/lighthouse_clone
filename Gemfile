@@ -15,7 +15,7 @@ gem 'jquery-rails'
 gem "devise"
 gem 'simple_form'
 gem 'browser-timezone-rails'
-
+gem 'ransack'
 group :development, :test do
 	gem "capybara"
   gem "capybara-screenshot"

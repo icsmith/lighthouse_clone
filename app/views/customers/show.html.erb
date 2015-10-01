@@ -1,5 +1,7 @@
 <h1>Show page</h1>
 <%= link_to "Back to customers", customers_path%>
+
+<!-- Outputs customer info -->
 <% for attribute in @customer.attributes.keys %>
 	<%unless @customer.attributes[attribute]%>
 	<i><b>
@@ -10,12 +12,20 @@
 	<%end%></li>
 <% end %>
 <br>
-<% if @customer.addresses.first %>
-<%= @customer.addresses.first.attributes %>
-<% else %>
-<i><b>Missing address</i></b>
+
+<!-- Dumps address info. Need to make nicer -->
+<% @customer.addresses.each do |a| %>
+	<%= a.attributes %>	<br>
+<% end %>
+
+<!-- Displays Missing address if none is set -->
+<% unless @customer.addresses.first %>
+	<i><b>Missing address</i></b>
 <% end%>
 <br><br>
+
+<!-- Customer actions -->
 <%= link_to "Service check list", form_path(@customer.id)+"/service_check_list"%>
 <%= link_to "Edit this customer", edit_customer_path %>
 <%= link_to "Delete this customer", customer_destroy_path, data: {confirm: "Are you sure?"} %>
+<%= link_to "Add a new address", new_customer_address_path(@customer) %>

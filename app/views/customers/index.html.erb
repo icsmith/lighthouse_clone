@@ -1,19 +1,23 @@
 <h1>Customers</h1>
 <!-- search form -->
-<%= form_tag(customers_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Customers" %>
-<%= submit_tag "Search" %>
+<%= search_form_for @q do |f| %>
+	<%= f.label :first_name_or_last_name_cont %>
+	<%= f.search_field :first_name_or_last_name_cont %>
+	<%= f.submit %>
 <% end %>
+
 <!-- search results -->
-<% if @customers.present? %>
-  <ul>
-	<% @customers.each do |customer| %>
-	<li><%= link_to [customer.first_name, customer.last_name].join(' '), customer%></li>
+<ul>
+	<% if @customers.present? %>
+		<% @customers.each do |customer| %>
+		<li><%= link_to [customer.first_name, customer.last_name].join(' '), customer%></li>
 	<%end %>
-
 </ul>
+<!-- Failed search -->
 <% else %>
-  <p>There are no customers containing the term(s) <%= params[:search] %>.</p>
+	<p>There are no customers containing the term(s) <%= params[:search] %>.</p>
 <% end %>
 
+
+<!-- Add to the database -->
 <%= link_to "Add New Customer", new_customer_path %>

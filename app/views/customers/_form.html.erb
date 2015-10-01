@@ -1,16 +1,54 @@
-  <%= form_for @customer, url: {action: action}, html: {class: "nifty_form"} do |f| %>
-  First name * <%= f.text_field :first_name %><br>
-  Middle initial <%= f.text_field :middle_initial %><br>
-  Last name *<%= f.text_field :last_name %><br>
-  Sex *<%= f.text_field :sex %> <br>
-  DOB *<%= f.text_field :dob %> <br>
-  Language <%= f.text_field :language %><br>
-  Memo <%= f.text_field :memo %><br>
-  Status <%= f.text_field :status%><br>
-  Status note <%= f.text_field :status_note%><br>
-  Client central station account number <%= f.text_field :client_central_station_account_number %><br>
-  Install date <%= f.text_field :install_date %><br>
-  Cancel date <%= f.text_field :cancel_date %><br>
-  Initial contact authorization date <%= f.text_field :initial_contact_autorization_date %><br>
-    <%= f.submit action.titleize %>
+  <!-- A form for creating and updating customer info and addresses -->
+
+  <%= simple_form_for @customer do |f| %>
+    <ul>
+    <li><%= f.input :first_name %></li>
+    <li><%= f.input :middle_initial %></li>
+    <li><%= f.input :last_name %></li>
+    <li><%= f.collection_select :sex, [['M', 'Male'] ,['F', 'Female']], :first, :last %> </li>
+    <li><%= f.input :dob, as: :date, start_year: Date.today.year - 100,
+                                end_year: Date.today.year,
+                                order: [:month, :day, :year]  %> </li>
+    <li><%= f.input :language, collection: ['English','Spanish'] %></li>
+    <li><%= f.input :memo %></li>
+    <li><%= f.input :status%></li>
+    <li><%= f.input :status_note%></li>
+    <li><%= f.input :client_central_station_account_number, as: :string %></li>
+    <li><%= f.input :install_date, include_blank: true %></li>
+    <li><%= f.input :cancel_date, as: :date, include_blank: true, start_year: Date.today.year - 100,
+                                end_year: Date.today.year,
+                                order: [:month, :day, :year]%></li>
+    <li><%= f.input :initial_contact_autorization_date %></li>
+    </ul>
+
+  Addresses:
+  <ul>
+    <%= f.fields_for :addresses do |addresses_form| %>
+      
+        <li><%= addresses_form.label :address_1 %>
+        <%= addresses_form.text_field :address_1 %></li>
+
+        <li><%= addresses_form.label :address_2 %>
+        <%= addresses_form.text_field :address_2 %></li>
+ 
+        <li><%= addresses_form.label :city %>
+        <%= addresses_form.text_field :city %></li>
+
+        <li><%= addresses_form.label :state %>
+        <%= addresses_form.text_field :state %></li>
+ 
+        <li><%= addresses_form.label :zip %>
+        <%= addresses_form.text_field :zip %></li>
+ 
+        <li><%= addresses_form.label :phone %>
+        <%= addresses_form.telephone_field :phone %></li>
+
+        <li><%= addresses_form.label :is_billing_address %>
+        <%= addresses_form.check_box :is_billing_address %></li>
+
+    <% end %>
+  </ul>
+    <%= f.button :submit %>
+
+
 <% end %>

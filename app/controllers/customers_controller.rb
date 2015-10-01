@@ -7,12 +7,8 @@ class CustomersController < ApplicationController
 
 
 	def index
-		@customers = Customer.all
-		if params[:search]
-		    @customers = Customer.search(params[:search]).order("created_at DESC")
-		else
-		    @customers = Customer.all.order('created_at DESC')
-		end
+		@q = Customer.ransack(params[:q])
+  		@customers = @q.result(distinct: true)
 	end
 
 	def show
@@ -21,16 +17,24 @@ class CustomersController < ApplicationController
 
 	def new
 		@customer = Customer.new
+		@customer.addresses.build
+
+
+
+
+
 	end
 
 	def create
-		@customer = Customer.create(customer_params)
-		if @customer.errors.messages.count > 0
-			flash[:notice] = @customer.errors.messages.to_s.humanize
-			redirect_to new_customer_path
-		else
+		@customer = Customer.new(customer_params)
+
+		if @customer.save
 			flash[:notice] = "Customer created"
 			redirect_to customers_path
+			
+		else
+			flash[:notice] = @customer.errors.messages.to_s.humanize
+			render 'new'
 		end
 	end
 
@@ -63,6 +67,16 @@ class CustomersController < ApplicationController
 	private
 
 	def customer_params
-	  params.require(:customer).permit(:first_name, :last_name, :dob, :sex, :middle_initial, :language, :memo, :status, :status_note, :client_central_station_account_number, :install_date, :cancel_date, :initial_contact_autorization_date)
+	  params.require(:customer).permit(:first_name, :last_name, :dob, :sex, 
+	  	:middle_initial, :language, :memo, :status, :status_note, 
+	  	:client_central_station_account_number, :install_date, :cancel_date, 
+	  	:initial_contact_autorization_date, 
+	  	addresses_attributes:[:address_1, :address_2, :city, :state, :id, :zip, :phone, :is_billing_address, :customer])
 	end
+
+	def address_params
+		params.require(:addresses_attributes).permit(:address_1, :city, :state, :id, :zip, :phone, :is_billing_address, :customer)
+	end
+
+
 end
