@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
 	before_action :authenticate_admin!
-	before_action :lookup_customer, only: [:show, :destroy, :service_check_list, :edit, :update]
+	before_action :lookup_customer, only: [:show, :destroy, :service_check_list, :edit, :update, :select]
 	def lookup_customer
 		@customer = Customer.find(params[:id])
 	end
@@ -18,11 +18,6 @@ class CustomersController < ApplicationController
 	def new
 		@customer = Customer.new
 		@customer.addresses.build
-
-
-
-
-
 	end
 
 	def create
@@ -38,6 +33,9 @@ class CustomersController < ApplicationController
 		end
 	end
 
+	def select
+
+	end
 
 	def edit
 
@@ -70,7 +68,8 @@ class CustomersController < ApplicationController
 	  params.require(:customer).permit(:first_name, :last_name, :dob, :sex, 
 	  	:middle_initial, :language, :memo, :status, :status_note, 
 	  	:client_central_station_account_number, :install_date, :cancel_date, 
-	  	:initial_contact_autorization_date, 
+	  	:initial_contact_autorization_date,
+	  	:caseworker_id, 
 	  	addresses_attributes:[:address_1, :address_2, :city, :state, :id, :zip, :phone, :is_billing_address, :customer])
 	end
 

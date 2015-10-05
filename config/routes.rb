@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   # Customer controller routes
 
   get 'forms/:id/service_check_list', to: 'forms#service_check_list'
-  get 'customers/:id/destroy' => 'customers#destroy', :as => :customer_destroy
+  # get 'customers/:id/destroy' => 'customers#destroy', :as => :customer_destroy  DON'T DO THIS. EXPOSES OUR DB WITH GET
+
+  # Caseworkers controller routes
+
+  get 'customers/:id/select' => 'customers#select', :as => :select_caseworker
 
 
   # Example of regular route:

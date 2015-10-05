@@ -1,0 +1,26 @@
+<%= link_to 'Customers page', customers_path %>
+<!-- search form -->
+<%= search_form_for @q do |f| %>
+	<%= f.label :first_name_or_last_name_cont %>
+	<%= f.search_field :first_name_or_last_name_cont %>
+	<%= f.submit %>
+<% end %>
+
+<!-- search results -->
+	
+<% if @caseworkers.present? %>
+	<table>
+		<% @caseworkers.each do |caseworker| %>
+			<tr>
+				<td><%= link_to [caseworker.first_name, caseworker.last_name].join(' '), caseworker%></td>
+			</tr>
+		<%end %>
+	</table>
+
+
+<!-- Failed search -->
+<% else %>
+	<p>There are no caseworkers containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+
+<%= link_to 'Add new caseworker', new_caseworker_path %>
