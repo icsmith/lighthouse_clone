@@ -69,13 +69,11 @@ class CustomersController < ApplicationController
 	  	:middle_initial, :language, :memo, :status, :status_note, 
 	  	:client_central_station_account_number, :install_date, :cancel_date, 
 	  	:initial_contact_autorization_date,
-	  	:caseworker_id, 
-	  	addresses_attributes:[:address_1, :address_2, :city, :state, :id, :zip, :phone, :is_billing_address, :customer])
+	  	:caseworker_id,
+	  	addresses_attributes:[:address_1, :address_2, :city, :state, :id, :zip, :phone, :phone_2, :is_billing_address, :customer])
+
 	end
 
-	def address_params
-		params.require(:addresses_attributes).permit(:address_1, :city, :state, :id, :zip, :phone, :is_billing_address, :customer)
-	end
 
 
 end

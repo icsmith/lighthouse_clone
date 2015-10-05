@@ -2,7 +2,7 @@ class Customer < ActiveRecord::Base
 	validates :first_name, :last_name, :sex, :dob, :status, presence: true
 
 	has_one :system
-	has_one :insurance
+	has_one :insurance, dependent: :destroy
 	has_many :addresses, dependent: :destroy
 	belongs_to :caseworker
 	belongs_to :billing_interval

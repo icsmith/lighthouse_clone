@@ -33,6 +33,14 @@ Caseworker
 <% end %>
 <br><br>
 
+<% if @customer.insurance %>
+insurance
+
+<%= link_to @customer.insurance, customer_insurance_path(@customer.id, @customer.insurance.id)%>
+<%= @customer.insurance.attributes %>
+<% end %>
+<br><br>
+
 <!-- Customer actions -->
 <div id = "footer">
 <%= link_to "Service check list", form_path(@customer.id)+"/service_check_list"%>
@@ -43,5 +51,10 @@ Caseworker
 	<%= link_to "Change caseworker", select_caseworker_path(@customer) %>
 <% else %>
 	<%= link_to "Add a caseworker", select_caseworker_path(@customer) %>
+<% end %>
+<% if @customer.insurance %>
+	<%= link_to "Change insurance", edit_customer_insurance_path(@customer.id, @customer.insurance.id) %>
+<% else %>
+	<%= link_to "Add insurance", new_customer_insurance_path(@customer) %>
 <% end %>
 </div>

@@ -1,0 +1,7 @@
+<%= link_to "Customers", customers_path %>
+<% for attribute in @insurance.attributes.keys %>
+<li><%= attribute.humanize %>: <%= @insurance.attributes[attribute].to_s %></li>
+<% end %>
+
+<%= link_to "Edit this insurance", edit_customer_insurance_path %>
+<%= link_to "Delete this insurance", customer_insurance_path, method: :delete, data: {confirm: "Are you sure?"} %>
