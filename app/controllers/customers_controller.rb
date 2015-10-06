@@ -18,6 +18,7 @@ class CustomersController < ApplicationController
 	def new
 		@customer = Customer.new
 		@customer.addresses.build
+		@customer.build_system
 	end
 
 	def create
@@ -70,7 +71,8 @@ class CustomersController < ApplicationController
 	  	:client_central_station_account_number, :install_date, :cancel_date, 
 	  	:initial_contact_autorization_date,
 	  	:caseworker_id,
-	  	addresses_attributes:[:address_1, :address_2, :city, :state, :id, :zip, :phone, :phone_2, :is_billing_address, :customer])
+	  	addresses_attributes:[:address_1, :address_2, :city, :state, :id, :zip, :phone, :phone_2, :is_billing_address, :customer],
+	  	system_attributes:[:lock_number, :test_call_number, :batter_date, :transponder_date, :system_type_id, :transponder_type_id])
 
 	end
 

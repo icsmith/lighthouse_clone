@@ -50,11 +50,29 @@
 
         <li><%= addresses_form.label :is_billing_address %>
         <%= addresses_form.check_box :is_billing_address %></li>
+        <% if request.original_url.include? "edit" %>
         <%= link_to "Delete this address", customer_address_path(@customer.id, @customer.addresses[index]), method: :delete, data: {confirm: "Are you sure?"} %>
+        <% end %>
   </ul>
     <% index += 1 %>
     <% end %>
+    <p>System info</p>
+    <%= f.simple_fields_for :system do |system_form| %>
+    <ul>
 
+        <%=system_form.input :lock_number %>
+        <%=system_form.input :test_call_number %>
+        <%=system_form.input :battery_date %>
+        <%=system_form.input :transponder_date %>
+        <%=system_form.association :system_type, label_method: lambda { |c| "#{c.system_type}" }, value_method: :id%>
+        <%=system_form.association :transponder_type, label_method: lambda { |c| "#{c.transponder_type}" }, value_method: :id%>
+
+
+
+
+
+    </ul>
+    <% end %>
 
     <%= f.button :submit %>
 

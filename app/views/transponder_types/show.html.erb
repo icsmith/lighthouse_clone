@@ -5,6 +5,8 @@
 <%= link_to "Destroy this transponder type", transponder_type_path(@trans_t), method: :delete, data: {confirm: "Are you sure?"} %>
 <table>
 <tr>
+	<td>System type</td>
+	<td>Transponder type</td>
 	<td>Lock Number</td>
 	<td>Test Call Number</td>
 	<td>Battery Date</td>
@@ -12,6 +14,9 @@
 </tr>
 <% @trans_t.systems.each do |t| %>
 <tr>
+	<td> <%= t.system_type.system_type %></td>
+	<td> <%= t.transponder_type.transponder_type %></td>
+
 	<td> <%= t.lock_number || "empty" %> </td>
     <td> <%= t.test_call_number || "empty" %> </td>
     <td> <%= t.battery_date || "empty" %> </td>

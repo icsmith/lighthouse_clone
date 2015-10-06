@@ -1,6 +1,9 @@
 <!-- Display all customers -->
 <h1>Customers</h1>
 <%= link_to "Caseworkers", caseworkers_path %>
+<%= link_to "System types", system_types_path %>
+<%= link_to "Transponder types", transponder_types_path %>
+
 <!-- search form -->
 <%= search_form_for @q do |f| %>
 	<%= f.label :first_name_or_last_name_cont %>
@@ -12,9 +15,21 @@
 	
 <% if @customers.present? %>
 	<table>
+		<tr>
+			<td>Name</td>
+			<td>City</td>
+			<td>Caseworker</td>
+			<td>System type</td>
+			<td>Transponder Type</td>
+		</tr>
 		<% @customers.each do |customer| %>
 			<tr>
 				<td><%= link_to [customer.first_name, customer.last_name].join(' '), customer%></td>
+				<td><%= customer.addresses.first.city || "empty" %></td>
+				<td><%= (customer.caseworker.first_name if customer.caseworker) || "empty" %></td>
+				<td><%= (customer.system.system_type.system_type if customer.system )  || "empty" %></td>
+				<td><%= (customer.system.transponder_type.transponder_type if customer.system) || "empty" %></td>
+
 			</tr>
 		<%end %>
 	</table>
