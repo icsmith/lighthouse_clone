@@ -7,11 +7,11 @@ class AddressesController < ApplicationController
 	end
 
 	def index
-
+		#unused
 	end
 
 	def show
-
+		#unused
 	end
 
 	def new

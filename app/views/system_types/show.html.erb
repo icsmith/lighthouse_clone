@@ -1,0 +1,22 @@
+<!-- System type show page -->
+<!-- Consider changing hard coded types to attributes calls -->
+<h1><%= @sys_t.system_type %></h1>
+<%= link_to "Edit System name", edit_system_type_path(@sys_t) %>
+<%= link_to "Destroy this system type", system_type_path(@sys_t), method: :delete, data: {confirm: "Are you sure? This will also delete all related systems."} %>
+<table>
+<tr>
+	<td>Lock Number</td>
+	<td>Test Call Number</td>
+	<td>Battery Date</td>
+	<td>Transponder Date</td>
+</tr>
+<% @sys_t.systems.each do |s| %>
+<tr>
+	<td> <%= s.lock_number || "empty" %> </td>
+    <td> <%= s.test_call_number || "empty" %> </td>
+    <td> <%= s.battery_date || "empty" %> </td>
+    <td> <%= s.transponder_date || "empty" %> </td>
+</tr>
+<% end %>
+
+</table>

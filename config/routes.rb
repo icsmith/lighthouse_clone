@@ -10,12 +10,16 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  # nested routes to allow /customers/:customer_id/addresses and /customers/:customer_id/addresses
-  # allowed because address belongs to customer
+  # nested routes to allow /customers/:customer_id/addresses and /customers/:customer_id/insurances
+  # allowed because address and insurance belong to customer
   resources :customers do
-    resources :addresses, :insurances
+    resources :addresses, :insurances, :systems
   end
-  resources :caseworkers,  :systems, :system_types, :transponder_types, :regions, :billing_intervals, :forms
+  resources :system_types, :transponder_types do
+    resources :systems
+  end
+
+  resources :caseworkers, :regions, :billing_intervals, :forms
 
   # Customer controller routes
 

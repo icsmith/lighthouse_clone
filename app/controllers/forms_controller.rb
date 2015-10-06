@@ -1,5 +1,6 @@
 class FormsController < ApplicationController
-		def service_check_list
+	
+	def service_check_list
 		@customer = Customer.find(params[:id])
 	end
 
