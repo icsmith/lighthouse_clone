@@ -1,0 +1,24 @@
+<!-- Form for creating a new address -->
+<%= link_to "Back to Customers", customers_path %>
+
+
+<%= form_for @insurance, url: {action: action}, html: {class: "nifty_form"} do |insurance_form| %>
+  <ul>
+       <li><%= insurance_form.label :insurance_name %>
+        <%= insurance_form.text_field :insurance_name %></li>
+
+        <li><%= insurance_form.label :diagnostics_code %>
+        <%= insurance_form.text_field :diagnostics_code %></li>
+ 
+        <li><%= insurance_form.label :venue %>
+        <%= insurance_form.text_field :venue %></li>
+
+        <li><%= insurance_form.label :medicaid_number %>
+        <%= insurance_form.text_field :medicaid_number %></li>
+ 
+        <li><%= insurance_form.label :isp_end_date %>
+        <%= insurance_form.date_field :isp_end_date %></li>
+</ul>
+
+  <%= insurance_form.submit action.titleize %>
+<% end %>

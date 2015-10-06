@@ -1,0 +1,6 @@
+<!-- Form for filling out TransponderType object -->
+<%= simple_form_for @trans_t do |f| %>
+<%= f.input :transponder_type %>
+<%= f.submit %>
+<% end %>
+<%= link_to "Back to Transponder Types", transponder_types_path %>

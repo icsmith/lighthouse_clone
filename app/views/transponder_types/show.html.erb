@@ -3,6 +3,8 @@
 <h1><%= @trans_t.transponder_type %></h1>
 <%= link_to "Edit transponder name", edit_transponder_type_path(@trans_t) %>
 <%= link_to "Destroy this transponder type", transponder_type_path(@trans_t), method: :delete, data: {confirm: "Are you sure?"} %>
+
+<!-- Consider making partial for system table -->
 <table>
 <tr>
 	<td>System type</td>
