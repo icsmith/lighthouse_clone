@@ -8,7 +8,7 @@ class RegionsController < ApplicationController
 	end
 
 	def index
-
+		@regions = Region.all
 	end
 
 	def show
@@ -16,11 +16,18 @@ class RegionsController < ApplicationController
 	end
 
 	def new
-
+		@region = Region.new
 	end
 
 	def create
-
+		@region = Region.new(region_params)
+		if @region.save
+			flash[:notice] = "Region created"
+			redirect_to regions_path
+		else
+			flash[:notice] = @region.errors.messages
+			redirect_to new_region_path
+		end
 	end
 
 	def edit
@@ -28,11 +35,24 @@ class RegionsController < ApplicationController
 	end
 
 	def update
-
+		@region.update(region_params)
+		if @region.save
+			flash[:notice] = "Region updated"
+			redirect_to regions_path
+		else
+			flash[:notice] = @region.errors.messages
+			redirect_to edit_region_path(@region)
+		end
 	end
 
 	def destroy
+		@region.destroy
+		flash[:notice] = "Region destroyed"
+		redirect_to regions_path
+	end
 
+	def region_params
+		params.require(:region).permit(:region_name)
 	end
 
 end

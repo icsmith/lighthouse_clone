@@ -20,6 +20,8 @@
                                 order: [:month, :day, :year]%></li>
     <li><%= f.input :initial_contact_autorization_date %></li>
     <li><%= f.association :caseworker, label_method: lambda { |c| "#{c.first_name} #{c.last_name}" }, value_method: :id %></li>
+    <li><%= f.association :region, label_method: lambda { |c| "#{c.region_name}" }, value_method: :id %></li>
+
 
     </ul>
 
