@@ -23,10 +23,10 @@
 
     </ul>
 
-  Addresses:
-  <ul>
+  Addresses: <% index = 0 %>
     <%= f.fields_for :addresses do |addresses_form| %>
-      
+  <ul>
+        
         <li><%= addresses_form.label :address_1 %>
         <%= addresses_form.text_field :address_1 %></li>
 
@@ -50,9 +50,10 @@
 
         <li><%= addresses_form.label :is_billing_address %>
         <%= addresses_form.check_box :is_billing_address %></li>
-
-    <% end %>
+        <%= link_to "Delete this address", customer_address_path(@customer.id, @customer.addresses[index]), method: :delete, data: {confirm: "Are you sure?"} %>
   </ul>
+    <% index += 1 %>
+    <% end %>
 
 
     <%= f.button :submit %>

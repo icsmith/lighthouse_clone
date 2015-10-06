@@ -41,7 +41,10 @@ class AddressesController < ApplicationController
 	end
 
 	def destroy
-
+		flash[:notice] = "Address destroyed"
+		@address = Address.find(params[:id])
+		@address.destroy
+		redirect_to(:back)
 	end
 
 	def address_params
