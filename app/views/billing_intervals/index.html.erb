@@ -1,0 +1,16 @@
+<h1>Billing Intervals</h1>
+<table>
+	<tr>
+		<td>Billing Interval</td>
+		<td># of customers </td>
+	</tr>
+<% @billings.each do |b| %>
+<tr>
+	<td> <%= link_to [b.billing_interval_name, b.interval_month].join(' '), b %> </td>
+	<td> <%= b.customers.count %></td>
+</tr>
+
+
+
+<% end %>
+</table>

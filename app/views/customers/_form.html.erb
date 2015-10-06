@@ -21,7 +21,7 @@
     <li><%= f.input :initial_contact_autorization_date %></li>
     <li><%= f.association :caseworker, label_method: lambda { |c| "#{c.first_name} #{c.last_name}" }, value_method: :id %></li>
     <li><%= f.association :region, label_method: lambda { |c| "#{c.region_name}" }, value_method: :id %></li>
-
+    <li><%= f.association :billing_interval, label_method: lambda { |c| "#{c.billing_interval_name} #{c.interval_month}" } %></li>
 
     </ul>
 

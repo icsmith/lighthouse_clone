@@ -21,6 +21,7 @@
 			<td>Caseworker</td>
 			<td>System type</td>
 			<td>Transponder Type</td>
+			<td>Billing Interval</td>
 		</tr>
 		<% @customers.each do |customer| %>
 			<tr>
@@ -29,6 +30,7 @@
 				<td><%= ([customer.caseworker.first_name, customer.caseworker.last_name].join(' ') if customer.caseworker) || "empty" %></td>
 				<td><%= (customer.system.system_type.system_type if customer.system )  || "empty" %></td>
 				<td><%= (customer.system.transponder_type.transponder_type if customer.system) || "empty" %></td>
+				<td><%= ([customer.billing_interval.billing_interval_name, customer.billing_interval.interval_month].join(' ') if customer.billing_interval) || "empty" %></td>
 
 			</tr>
 		<%end %>
