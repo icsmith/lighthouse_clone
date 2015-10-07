@@ -1,0 +1,137 @@
+<% customer_name = [@customer.first_name, @customer.last_name].join(' ') %>
+<h2><center><p>RESPONSE CENTER USA</p>
+<p>CREATE AN ACCOUNT SHELL</p></center></h2>
+<pre><div id = "pre">
+DEALER NAME:		LIGHTHOUSE SYSTEMS
+
+DEALER PHONE:		(956)631-7016
+
+SUBMITTED BY:		PAT SMITH
+
+DATE:		<textarea></textarea>
+
+
+ACCT TO BE CREATED:		<%= @customer.client_central_station_account_number %>
+
+CUSTOMER NAME: 		<%= customer_name  %>
+
+ADDRESS:	<%=[@customer.addresses.first.address_1, @customer.addresses.first.address_2].join(' ') %>								<%=[@customer.addresses.second.address_1, @customer.addresses.second.address_2].join(' ') if @customer.addresses.second %>
+			<%= [@customer.addresses.first.city, @customer.addresses.first.state, @customer.addresses.first.zip].join(', ') %>					<%= [@customer.addresses.second.city, @customer.addresses.second.state, @customer.addresses.second.zip].join(', ') if @customer.addresses.second %>
+
+LOCATION PHONE: <%=@customer.addresses.first.phone %>
+
+ANTICIPATED HOOK UP DATE:
+
+
+</div></pre>
+
+<pre style="page-break-after:always;"><center>
+Lighthouse Systems
+3820 S Jackson Rd Unit A
+Pharr, TX 78577
+956-631-7016
+</center>
+</pre>
+
+<!-- pagebreak INSTALL CHECK LIST -->
+
+<h2><center>INSTALL CHECK LIST</center></h2>
+
+<pre style="page-break-after:always;"><div id= "pre">
+CUSTOMER NAME: <%= customer_name %>
+
+CUSTOMER DIALER #: <%= @customer.client_central_station_account_number %>
+
+START TIME/ DATE _______________________________________________________
+
+END TIME/ DATE _________________________________________________________
+
+Transformer screwed in _____ 	Transmitter tested to furthest limit ____
+
+Phone jack secure _____ 				Customer phone tested _____
+
+System tested to CS _____ 			Business card & magnet left _____
+
+Paperwork Signed _____
+
+EXTRA PARTS USED: _______________________________________________
+______________________________________________________________________
+______________________________________________________________________
+
+SPECIAL NOTES: ___________________________________________________
+______________________________________________________________________
+
+Payment Calc:		Install 				_________
+				Mileage ________x.30 	_________
+				Parts 				_________
+				Total				_________
+
+
+Tech Signature______________________________________ Date ____________
+</div></pre>
+
+<!-- pagebreak SUBSCRIBER SERVICE AGREEMENT -->
+<h4 style="line-height:1"><center><p>Lighthouse Systems, LLC</p>
+			<p>SUBSCRIBER SERVICE AGREEMENT</p></center></h4>
+<div style="font-size:small; line-height:1;">
+<p>
+	I, <%= customer_name %>, agree to the following terms:
+</p>
+<p><b>EQUIPMENT OWNERSHIP:</b> The Housecall equipment is property of Lighthouse Systems, LLC and is used with clients of your HMO. In the event I am no longer eligible for or in need of emergency response services (ERS), I agree to return the equipment to representative(s) of Lighthouse Systems, LLC of your HMO. In the event of my death or incapacity, I authorize other persons acting in my behalf to relinquish the equipment to said representative(s). </p>
+<p><b>STANDARD EQUIPMENT:</b> The ERS equipment consists of (1) console, (1) remote transmitter, (1) or more adapter jacks used to attach the console to the telephone jack, and any cords or multuple plugs used to provide electricity for the console.</p>
+<p><b>FALSE ALARMS/ACCIDENTAL ALARMS:</b> I understand that Lighthouse Systems, LLC may remoce the equipment from my home if I activate either (20) false alarms of any kind within a 6 months period or (4) false alarms which result in a response by paramedics, police or other emergency personnel. I will use every precaution to avous accidental alarns. I will not willfully cause false alarms.</p>
+<p><b>EQUIPMENT REMOVAL: </b>I understand that I will be notified of false alarm problems so that the problem can be resolbed. I will be notified before the equipment is removed. Telephone equipment or electrical malfunctions are not considered to be false alarms. </p>
+<p><b>OPERATING INSTRUCTIONS: </b> The operation and use of the transmitter and the console placed in my home have been explained to me. I have been given a copy of the printed instructions on the use of the equipment and the telephone number(s) I may call if the equipment develops a problem. Never disconnect the unit from the telephone line or the wall plug.</p>
+<p><b>MONTHLY SYSTEM CHECKS:</b> I understand that it is my responsibility to participate in monthly system checks by pressing my transmitter. This will ensure that the equipment is in proper working consition. Please test your system between the 1st and 15th of every month. If I do not test, Lighthouse Systems, LLC will call a minimum of (3) times each month to prompt me to test.</p>
+<p><b>SUBSCRIBER'S DUTIES: </b> I understand that it is my responsibility to keep curent the responder information and client information provided to Ligthouse Systems, LLC. I must also be willing to allow the responder to make forced entry into my home if he/she is asked to respond to an alaeam call and has no other means of entering thr home. I am aware that I am responsible for any damage caused to my home due to forced entry. </p>
+<p><b>COMPLAINT PROCEDURES: </b> I am aware that if I have any complaints, I sould contact Lighthouse Systems, LLC at 956-361-7016 or 1-866-232-0415.</p>
+
+<pre><div id = "pre" style="font-size:small;">
+
+_______________________________________  _______________________________________
+Client Signature 						   Lighthouse Systems Rep
+
+_______________________________________
+Date</div></pre>
+</div>
+
+<pre style="page-break-after:always; font-size:smaller;"><center>Lighthouse Systems
+3820 S Jackson Rd Unit A
+Pharr, TX 78577
+956-631-7016
+</center>
+</pre>
+
+<!-- pagebreak SUBSCRIBER SERVICE AGREEMENT customer copy-->
+
+
+<h4 style="line-height:1"><center><p>Lighthouse Systems, LLC</p>
+			<p>SUBSCRIBER SERVICE AGREEMENT</p></center></h4>
+<div style="font-size:small; line-height:1;">
+<p>
+	I, <%= customer_name %>, agree to the following terms:
+</p>
+<p><b>EQUIPMENT OWNERSHIP:</b> The Housecall equipment is property of Lighthouse Systems, LLC and is used with clients of your HMO. In the event I am no longer eligible for or in need of emergency response services (ERS), I agree to return the equipment to representative(s) of Lighthouse Systems, LLC of your HMO. In the event of my death or incapacity, I authorize other persons acting in my behalf to relinquish the equipment to said representative(s). </p>
+<p><b>STANDARD EQUIPMENT:</b> The ERS equipment consists of (1) console, (1) remote transmitter, (1) or more adapter jacks used to attach the console to the telephone jack, and any cords or multuple plugs used to provide electricity for the console.</p>
+<p><b>FALSE ALARMS/ACCIDENTAL ALARMS:</b> I understand that Lighthouse Systems, LLC may remoce the equipment from my home if I activate either (20) false alarms of any kind within a 6 months period or (4) false alarms which result in a response by paramedics, police or other emergency personnel. I will use every precaution to avous accidental alarns. I will not willfully cause false alarms.</p>
+<p><b>EQUIPMENT REMOVAL: </b>I understand that I will be notified of false alarm problems so that the problem can be resolbed. I will be notified before the equipment is removed. Telephone equipment or electrical malfunctions are not considered to be false alarms. </p>
+<p><b>OPERATING INSTRUCTIONS: </b> The operation and use of the transmitter and the console placed in my home have been explained to me. I have been given a copy of the printed instructions on the use of the equipment and the telephone number(s) I may call if the equipment develops a problem. Never disconnect the unit from the telephone line or the wall plug.</p>
+<p><b>MONTHLY SYSTEM CHECKS:</b> I understand that it is my responsibility to participate in monthly system checks by pressing my transmitter. This will ensure that the equipment is in proper working consition. Please test your system between the 1st and 15th of every month. If I do not test, Lighthouse Systems, LLC will call a minimum of (3) times each month to prompt me to test.</p>
+<p><b>SUBSCRIBER'S DUTIES: </b> I understand that it is my responsibility to keep curent the responder information and client information provided to Ligthouse Systems, LLC. I must also be willing to allow the responder to make forced entry into my home if he/she is asked to respond to an alaeam call and has no other means of entering thr home. I am aware that I am responsible for any damage caused to my home due to forced entry. </p>
+<p><b>COMPLAINT PROCEDURES: </b> I am aware that if I have any complaints, I sould contact Lighthouse Systems, LLC at 956-361-7016 or 1-866-232-0415.</p>
+
+<pre><div id = "pre" style="font-size:small;">
+
+_______________________________________  _______________________________________
+Client Signature 						   Lighthouse Systems Rep
+
+_______________________________________
+Date</div></pre>
+</div>
+<span id = "copy">CUSTOMER COPY</span>
+<pre style="page-break-after:always; font-size:smaller;"><center>Lighthouse Systems
+3820 S Jackson Rd Unit A
+Pharr, TX 78577
+956-631-7016
+</center>
+</pre>

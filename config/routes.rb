@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   
   get 'forms/:id/service_check_list', to: 'forms#service_check_list'
+  get 'forms/:id/account_shell', to: 'forms#account_shell'
+
   get 'forms/generate_bills', to: 'forms#generate_bills'
 
   # nested routes to allow /customers/:customer_id/addresses and /customers/:customer_id/insurances
