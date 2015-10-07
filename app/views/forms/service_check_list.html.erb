@@ -1,14 +1,62 @@
-<center>SERVICE CHECK LIST #</center>
-<br>
-<center>Date of Call: </center>
-<br>
-Customer Name: <%= @customer.first_name << " " << @customer.last_name %>
-<br>
-Language: <%= @customer.language %><br>
-Address: 
-<% @customer.addresses.each do |address| %>
-<%= address.address_1<<"\t"<<address.city<<" "<<address.state<<" "<<address.zip %> <br>
-Phone #:
-<%= address.phone %>
-<br>
-<% end %>
+<div id = "all">
+<div id = "title"><p><center>SERVICE CHECK LIST #</center></p>
+
+<p><center>Date of Call: </center></p>
+</div>
+
+<div id = "body">
+	<p><div id= "left">Customer Name: <%= @customer.first_name << " " << @customer.last_name %></div>
+
+		<div id = "right"> Language: <%= @customer.language %></p>
+			Central Station #: <%= @customer.client_central_station_account_number %></div>
+		<p>
+		<div id= "left">Address: 
+			
+			<% @customer.addresses.each do |address| %>
+
+			<%= address.address_1<<"\t"<<address.city<<" "<<address.state<<" "<<address.zip %> </div>
+			<p><div id= "left">Phone #:<%= address.phone %>; <%= address.phone_2%></div></p>
+
+			<% end %>
+			</p>
+
+
+			<p><div id = "left">System: <%= @customer.system.lock_number  if @customer.system %></div>
+			<center>Batt: <%= @customer.system.battery_date if @customer.system%></center>
+			<div id = "right">Inst Date: <%= @customer.install_date %></div></p>
+
+			<div id = "title"><center>REPAIRS</center></div>
+
+			<div id= "left">
+				<p>Nature of Problem:</p>
+				<p>Comments: <%= @customer.memo %></p>
+
+				<p>Responders:</p>
+
+			</div>
+		</div>
+
+			<div id= "left">Tested to Central Station:______</div>
+
+			<div id = "title"><center>REMOVAL</center></div>
+
+			<div id = "left">
+				<p>Recovered console  ______  			</p>
+				<p>Outlet cover screwed in ______</p>
+				<p>Misc Parts recovered _________________</p>
+			</div>
+			<div id = "right">
+				<p>Recovered transmitter ______ 		</p>
+				<p>Phone plugged in/working ______</p>
+				<p>New console acct # _____________</p>
+			</div>
+			<div id = "payment"><div id = "right"><p>PAYMENT CALC: &nbsp; Service Call &nbsp; ___________________________</p>
+			<p>Mileage &nbsp; _____ x.30 &nbsp; ___________________________</p>
+			<p>Parts &nbsp; ___________________________</p>
+			<p>Postage  &nbsp; ___________________________</p>
+			<p>TOTAL   &nbsp; ___________________________</p></div></div>
+
+
+			<div id = "left"><p>Tech Signature ______________________________  Date ______________</p></div>
+
+		</div>
