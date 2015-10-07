@@ -14,3 +14,9 @@
 
 <% end %>
 </table>
+
+<%= form_tag("billing_intervals/select_billings") do %>
+	<%= label_tag(:target, "Generate bills for this month" )%>
+	<%= number_field(:target, :target, in: 1..12) %>
+	<%= submit_tag("Generate") %>
+	<% end %> 

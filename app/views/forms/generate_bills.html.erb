@@ -1,0 +1,7 @@
+<% @bills.each do |b| %>
+	<% BillingInterval.where(id: b["id"]).first.customers.each do |c|%>
+		<p style = "page-break-after:always;">
+		Bill for <%= [c.first_name, c.last_name].join(' ') %>
+		</p>
+	<% end %>
+<% end %>

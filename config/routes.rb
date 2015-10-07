@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  
+  get 'forms/:id/service_check_list', to: 'forms#service_check_list'
+  get 'forms/generate_bills', to: 'forms#generate_bills'
+
   # nested routes to allow /customers/:customer_id/addresses and /customers/:customer_id/insurances
   # allowed because address and insurance belong to customer
   resources :customers do
@@ -23,13 +27,15 @@ Rails.application.routes.draw do
 
   # Customer controller routes
 
-  get 'forms/:id/service_check_list', to: 'forms#service_check_list'
   # get 'customers/:id/destroy' => 'customers#destroy', :as => :customer_destroy  DON'T DO THIS. EXPOSES OUR DB WITH GET
 
   # Caseworkers controller routes
 
   get 'customers/:id/select' => 'customers#select', :as => :select_caseworker
 
+  # Billing Interval controller routes
+
+  post 'billing_intervals/select_billings', to: 'billing_intervals#select_billings'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

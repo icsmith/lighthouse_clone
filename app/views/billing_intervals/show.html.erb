@@ -1,0 +1,12 @@
+<h1><%= [@billing.billing_interval_name, @billing.interval_month].join(' ') %></h1>
+
+<table>
+	<tr>
+		<td>Customer name</td>
+	</tr>
+	<% @billing.customers.each do |c| %>
+	<tr>
+		<td><%= link_to [c.first_name, c.last_name].join(' '), customer_path(c) %></td>
+	</tr>
+	<% end %>
+</table>
