@@ -1,0 +1,16 @@
+<h2><center>RESPONSE CENTER USA</center></h2>
+<H2><center>UPDATE OF INFORMATION</center></H2>
+
+<pre id = "pre">
+Date: <%= Date.current %>
+
+Dealer Name:  <u>Lighthouse Systems</u>	Phone: <u>956-361-7016</u>
+
+Customer Name:  <%= [@customer.first_name, @customer.last_name].join(' ') %>
+
+Customer #:  <%= @customer.client_central_station_account_number %>
+</pre>
+
+<h2><center><u>UPDATED INFO:</u></center></h2>
+
+<textarea></textarea>

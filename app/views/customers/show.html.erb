@@ -45,6 +45,8 @@ insurance
 <div id = "footer">
 <%= link_to "Service check list", form_path(@customer.id)+"/service_check_list"%>
 <%= link_to "Create Account Shell", form_path(@customer.id)+"/account_shell"%>
+<%= link_to "Update of Information Form", form_path(@customer.id)+"/update_info"%>
+
 
 <%= link_to "Edit this customer", edit_customer_path %>
 <%= link_to "Delete this customer", @customer, method: :delete, data: {confirm: "Are you sure?"} %>
