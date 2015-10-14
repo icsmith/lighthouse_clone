@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006202455) do
+ActiveRecord::Schema.define(version: 20151014175831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20151006202455) do
     t.text     "memo"
     t.integer  "status",                                default: 1,  null: false
     t.string   "status_note"
-    t.integer  "client_central_station_account_number"
+    t.string   "client_central_station_account_number"
     t.date     "install_date"
     t.date     "cancel_date"
     t.date     "initial_contact_autorization_date"
