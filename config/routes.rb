@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   
   get 'forms/:id/service_check_list', to: 'forms#service_check_list'
+  get 'forms/:id/account_shell_spanish', to: 'forms#account_shell_spanish'
+
   get 'forms/:id/account_shell', to: 'forms#account_shell'
   get 'forms/:id/update_info', to: 'forms#update_info'
 

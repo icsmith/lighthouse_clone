@@ -39,17 +39,18 @@ class CustomersController < ApplicationController
 	end
 
 	def edit
-
+		unless @customer.system
+			@customer.build_system
+		end
 	end
 
 	def update
 	
-		if @customer.errors.messages.count > 0
-			flash[:notice] = "Error "<< @customer.errors.messages.to_s.humanize
+		if @customer.update(customer_params)
+			flash[:notice] = "Customer updated"
 			redirect_to customer_path
 		else
-			flash[:notice] = "Customer updated"
-			@customer.update(customer_params)
+			flash[:notice] = "Error "<< @customer.errors.messages.to_s.humanize
 			redirect_to customer_path
 		end
 	end

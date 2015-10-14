@@ -1,6 +1,6 @@
 class FormsController < ApplicationController
 	before_action :authenticate_admin!
-	before_action :lookup_customer, only:[:service_check_list, :account_shell, :update_info]
+	before_action :lookup_customer, only:[:service_check_list, :account_shell_spanish,:account_shell, :update_info]
 	def service_check_list
 	end
 
@@ -15,6 +15,9 @@ class FormsController < ApplicationController
 	end
 
 	def update_info
+	end
+
+	def account_shell
 	end
 
 	def lookup_customer

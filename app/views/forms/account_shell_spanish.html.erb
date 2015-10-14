@@ -1,0 +1,340 @@
+<% customer_name = [@customer.first_name, @customer.last_name].join(' ') %>
+<h2><center><p>RESPONSE CENTER USA</p>
+<p>CREATE AN ACCOUNT SHELL</p></center></h2>
+<pre><div id = "pre">
+DEALER NAME:		LIGHTHOUSE SYSTEMS
+
+DEALER PHONE:		(956)631-7016
+
+SUBMITTED BY:		PAT SMITH
+
+DATE:		<textarea></textarea>
+
+
+ACCT TO BE CREATED:		<%= @customer.client_central_station_account_number %>
+
+CUSTOMER NAME: 		<%= customer_name  %>
+
+ADDRESS:	<%=[@customer.addresses.first.address_1, @customer.addresses.first.address_2].join(' ') %>								<%=[@customer.addresses.second.address_1, @customer.addresses.second.address_2].join(' ') if @customer.addresses.second %>
+			<%= [@customer.addresses.first.city, @customer.addresses.first.state, @customer.addresses.first.zip].join(', ') %>					<%= [@customer.addresses.second.city, @customer.addresses.second.state, @customer.addresses.second.zip].join(', ') if @customer.addresses.second %>
+
+LOCATION PHONE: <%=@customer.addresses.first.phone %>
+
+<b><center>ATTN:<u>CUSTOMER ONLY SPEAKS SPANISH</u></center></b>
+
+ANTICIPATED HOOK UP DATE:
+
+
+</div></pre>
+
+<pre style="page-break-after:always;"><center>
+Lighthouse Systems
+3820 S Jackson Rd Unit A
+Pharr, TX 78577
+956-631-7016
+</center>
+</pre>
+
+<!-- pagebreak INSTALL CHECK LIST -->
+
+<h2><center>INSTALL CHECK LIST</center></h2>
+
+<pre style="page-break-after:always;"><div id= "pre">
+CUSTOMER NAME: <%= customer_name %>
+
+CUSTOMER DIALER #: <%= @customer.client_central_station_account_number %>
+
+START TIME/ DATE _______________________________________________________
+
+END TIME/ DATE _________________________________________________________
+
+Transformer screwed in _____ 	Transmitter tested to furthest limit ____
+
+Phone jack secure _____ 				Customer phone tested _____
+
+System tested to CS _____ 			Business card & magnet left _____
+
+Paperwork Signed _____
+
+EXTRA PARTS USED: _______________________________________________
+______________________________________________________________________
+______________________________________________________________________
+
+SPECIAL NOTES: ___________________________________________________
+______________________________________________________________________
+
+Payment Calc:		Install 				_________
+				Mileage ________x.30 	_________
+				Parts 				_________
+				Total				_________
+
+
+Tech Signature______________________________________ Date ____________
+</div></pre>
+
+<!-- pagebreak SUBSCRIBER SERVICE AGREEMENT -->
+<h4 style="line-height:1"><center><p>Lighthouse Systems, LLC</p>
+			<p>CONTRACTO DE SERVICIO DEL SUSCRIPTOR</p></center></h4>
+<div style="font-size:small; line-height:1;">
+<p>
+	Yo, <%= customer_name %>, estoy de acuerdo con los términos siguientes:
+</p>
+<p><b>PROPIEDAD DEL EQUIPO:  <u>ESTE SYSTEMA ES PROPIEDAD DE LIGHTHOUSE SYSTEMS, LLC.  EL NO REGRESAR ESTE SYSTEMA PUDIESE RESULTAR EN QUE USTED O SU BENEFICIARIO SEAN RESPONSABLES DE CARGOS DE HASTA $500.</u> </b>  En el caso que no soy elegible para o que no tengo la necesidad de los servicios de la respuesta de emergencia (Emergency Response Services, ERS), estoy de acuerdo volver el equipo al representante(s) de Lighthouse Systems, LLC o HMO.  En caso de mi muerte o incapacidad, autorizo a otras personas que actúan en mi favor para renunciar el equipo a los representantes dichos.</p>
+<p><b>EQUIPO ESTANDAR: </b> El equipo del he ERS consiste en (1) la consola, (1) el transmisor, (1) o mas adaptadores usados para conectar la consola al gato de teléfono, y cual quiera cuerdas o enchufes múltiples para proporcionar electricidad a la consola.
+</p>
+<p><b>ALARMAS FALSAS / ALARMAS ACCIDENTALES:</b> Entiendo que Lighthouse Systems, LLC quitar el equipo de mi hogar si activo (20) alarmas falsas de cualquier clase dentro de un tiempo de 6 meses o (4) alarmas falsas cuales resultan en repuestas de los paramédicos, de la policía o de otros personales de emergencia.  Utilizare cada precaución para evitar alarmas accidentales.  No causare alarmas falsas voluntariamente. </p>
+<p><b>RETIRO DEL EQUIPO: </b>Entiendo que me notificaran de problemas de alarmas falsas de un modo que el problema pueda ser resuelto.  Me notificaran antes de que se quite el equipo.  El equipo del teléfono o los mal funciones eléctricos no se considera alarmas falsas. </p>
+<p><b>INSTRUCCIONES DE OPERACIÓN: </b> La operación y el uso del transmisor y de la consola colocados en mi hogar se han explicado a mi.  Me han dado una copia de las instrucciones en el uso del equipo y los números de teléfono que puedo llamar si el equipo desarrolla un problema.  No decsonecte el aparato de la linea de telefono o del enchufe electrico.</p>
+<p><b>REVISION DE SISTEMA MENSUALES: </b> Entiendo que es mi responsabilidad participar en las revisiones mensuales presionando mi transmisor.  Esto se asegurara de que el equipo este en condiciones de trabajo apropiadas. Verifique funcion de su aparato una vez al mes del 1 o al 15 del mes.  Si no pruebo, Lighthouse Systems, LLC llamaran un mínimo de (3) veces cada mes  para provocarme probar.</p>
+<p><b>DEBERES DEL SUSCRIPTOR:</b>   Entiendo que es mi responsabilidad mantener actual la información del respondedor y la información del cliente proporcionada a Lighthouse Systems, LLC.  Debo también estar dispuesto a permitir que el respondedor haga la entrada de las fuerzas en mi hogar si te piden responder a una llamada de alarma y no tiene ningún otro medio de entrar el hogar.  Soy consciente que soy responsable de cualquier daño causado a mi hogar debido a la entrada forzada. 
+ </p>
+<p><b>PROCEDIMIENTOS DE QUEJA: </b> Soy consciente que si tengo cualquiera queja, debo contactar a Lighthouse Systems, LLC a 956-631-7016 o 1-866-232-0415.    </p>
+
+<pre><div id = "pre" style="font-size:small;">
+
+_______________________________________  _______________________________________
+Firma de Cliente						   Representante de Lighthouse Systems
+
+_______________________________________
+Fecha</div></pre>
+</div>
+
+<pre style="page-break-after:always; font-size:smaller;"><center>Lighthouse Systems
+3820 S Jackson Rd Unit A
+Pharr, TX 78577
+956-631-7016
+</center>
+</pre>
+
+<!-- pagebreak SUBSCRIBER SERVICE AGREEMENT customer copy-->
+
+
+<h4 style="line-height:1"><center><p>Lighthouse Systems, LLC</p>
+			<p>CONTRACTO DE SERVICIO DEL SUSCRIPTOR</p></center></h4>
+<div style="font-size:small; line-height:1;">
+<p>
+	Yo, <%= customer_name %>, estoy de acuerdo con los términos siguientes:
+</p>
+<p><b>PROPIEDAD DEL EQUIPO:  <u>ESTE SYSTEMA ES PROPIEDAD DE LIGHTHOUSE SYSTEMS, LLC.  EL NO REGRESAR ESTE SYSTEMA PUDIESE RESULTAR EN QUE USTED O SU BENEFICIARIO SEAN RESPONSABLES DE CARGOS DE HASTA $500.</u> </b>  En el caso que no soy elegible para o que no tengo la necesidad de los servicios de la respuesta de emergencia (Emergency Response Services, ERS), estoy de acuerdo volver el equipo al representante(s) de Lighthouse Systems, LLC o HMO.  En caso de mi muerte o incapacidad, autorizo a otras personas que actúan en mi favor para renunciar el equipo a los representantes dichos.</p>
+<p><b>EQUIPO ESTANDAR: </b> El equipo del he ERS consiste en (1) la consola, (1) el transmisor, (1) o mas adaptadores usados para conectar la consola al gato de teléfono, y cual quiera cuerdas o enchufes múltiples para proporcionar electricidad a la consola.
+</p>
+<p><b>ALARMAS FALSAS / ALARMAS ACCIDENTALES:</b> Entiendo que Lighthouse Systems, LLC quitar el equipo de mi hogar si activo (20) alarmas falsas de cualquier clase dentro de un tiempo de 6 meses o (4) alarmas falsas cuales resultan en repuestas de los paramédicos, de la policía o de otros personales de emergencia.  Utilizare cada precaución para evitar alarmas accidentales.  No causare alarmas falsas voluntariamente. </p>
+<p><b>RETIRO DEL EQUIPO: </b>Entiendo que me notificaran de problemas de alarmas falsas de un modo que el problema pueda ser resuelto.  Me notificaran antes de que se quite el equipo.  El equipo del teléfono o los mal funciones eléctricos no se considera alarmas falsas. </p>
+<p><b>INSTRUCCIONES DE OPERACIÓN: </b> La operación y el uso del transmisor y de la consola colocados en mi hogar se han explicado a mi.  Me han dado una copia de las instrucciones en el uso del equipo y los números de teléfono que puedo llamar si el equipo desarrolla un problema.  No decsonecte el aparato de la linea de telefono o del enchufe electrico.</p>
+<p><b>REVISION DE SISTEMA MENSUALES: </b> Entiendo que es mi responsabilidad participar en las revisiones mensuales presionando mi transmisor.  Esto se asegurara de que el equipo este en condiciones de trabajo apropiadas. Verifique funcion de su aparato una vez al mes del 1 o al 15 del mes.  Si no pruebo, Lighthouse Systems, LLC llamaran un mínimo de (3) veces cada mes  para provocarme probar.</p>
+<p><b>DEBERES DEL SUSCRIPTOR:</b>   Entiendo que es mi responsabilidad mantener actual la información del respondedor y la información del cliente proporcionada a Lighthouse Systems, LLC.  Debo también estar dispuesto a permitir que el respondedor haga la entrada de las fuerzas en mi hogar si te piden responder a una llamada de alarma y no tiene ningún otro medio de entrar el hogar.  Soy consciente que soy responsable de cualquier daño causado a mi hogar debido a la entrada forzada. 
+ </p>
+<p><b>PROCEDIMIENTOS DE QUEJA: </b> Soy consciente que si tengo cualquiera queja, debo contactar a Lighthouse Systems, LLC a 956-631-7016 o 1-866-232-0415.    </p>
+
+<pre><div id = "pre" style="font-size:small;">
+
+_______________________________________  _______________________________________
+Firma de Cliente						   Representante de Lighthouse Systems
+
+_______________________________________
+Fecha</div></pre>
+</div>
+
+<pre style="page-break-after:always; font-size:smaller;"><center>Lighthouse Systems
+3820 S Jackson Rd Unit A
+Pharr, TX 78577
+956-631-7016
+</center>
+</pre>
+
+<!-- pagebreak Privacy practices -->
+<h2><center>Aviso de prácticas privadas</center></h2>
+<div style="font-size:small;">
+<p>Este aviso describe cómo información médica sobre usted puede utilizarse y divulgarse y cómo puede obtener acceso a esta información. Por favor léala cuidadosamente.</p>
+
+<div id= "title"><center>Cómo Lighthouse Systems pueden usar o divulgar su información de salud</center></div>
+
+<p><u>Para los servicios :</u> Lighthouse Systems pueden utilizar y obtener su información médica para proporcionarle servicios de respuesta de emergencia, por ejemplo, la información obtenida por una agencia, como proveedor de respuesta de emergencia, estación Central y otros agencias provedoras de prestación de servicios de salud, grabará la información en su archivo relacionada con usted. Lighthouse Systems pueden utilizar su información cuando se le refiere al personal de emergencia (EMS, policía y bomberos) o de otras agencias de salud en el hogar o instalaciones.</p>
+
+<p><u>Para Pago:</u> Lighthouse Systems puede utilizar y obtener  información sobre su salud para fines de recibir pago por los servicios que usted recibe. Por ejemplo, una factura(cobro) puede enviarse a usted, su representante o una compañía de seguros o agencia. La información sobre la factura(cobro) puede contener información que lo identifica a usted y los servicios que recibe o ha recibido, Lighthouse Systems podrá utilizar su información para comunicarnos con usted acerca de los saldos de cuenta.</p>
+
+<p><u>Requerido por la ley,</u> Lighthouse Systems puede usar y divulgar información según lo requerido por la ley. Por ejemplo,
+<li>Para el procedimiento judicial y administrativo en virtud de la autoridad legal;</li>
+<li>Para reportar información relacionada a víctimas de abuso, negligencia o violencia doméstica,</li>
+<li>Ayudar a los funcionarios encargados de hacer cumplir la ley en sus funciones de aplicación de la ley.</li></p>
+
+<p><u>Servicio Incial y Futuro Servicios: </u>Lighthouse Systems puede comunicarse con usted para programar visitas al hogar para proporcionar servicios o prueba  rmensuales de su sistema. Cuando se realizan contactos vía telefónica, se dejará mensajes en su contestadora con información limitada.
+ </p>
+
+<p><u>Notificación: </u>Lighthouse Systems y socios de negocios (estación Central) pueden usar o divulgar información para notificar a un miembro de la familia, representante u otra persona responsable de su cuidado, su ubicación y condición general.</p>
+
+<p><u>Comunicación con la familia :</u> Lighthouse Systems y personal ejercen su mejor juicio y podran revelar a un miembro de la familia, pariente, amigo cecano o cualquier otra persona que usted identifique, información sobre su salud relacionado con la participación de esa persona en su atención o pago relacionados con servicios que recibió.  </p></div>
+
+<pre style="page-break-after:always;" id="pre">
+
+
+_____________________________________           _________________
+Firma                                                      Fecha
+</pre>
+
+<!-- pagebreak Privacy policies customer copy -->
+
+<h2><center>Aviso de prácticas privadas</center></h2>
+<div style="font-size:small;">
+<p>Este aviso describe cómo información médica sobre usted puede utilizarse y divulgarse y cómo puede obtener acceso a esta información. Por favor léala cuidadosamente.</p>
+
+<div id= "title"><center>Cómo Lighthouse Systems pueden usar o divulgar su información de salud</center></div>
+
+<p><u>Para los servicios :</u> Lighthouse Systems pueden utilizar y obtener su información médica para proporcionarle servicios de respuesta de emergencia, por ejemplo, la información obtenida por una agencia, como proveedor de respuesta de emergencia, estación Central y otros agencias provedoras de prestación de servicios de salud, grabará la información en su archivo relacionada con usted. Lighthouse Systems pueden utilizar su información cuando se le refiere al personal de emergencia (EMS, policía y bomberos) o de otras agencias de salud en el hogar o instalaciones.</p>
+
+<p><u>Para Pago:</u> Lighthouse Systems puede utilizar y obtener  información sobre su salud para fines de recibir pago por los servicios que usted recibe. Por ejemplo, una factura(cobro) puede enviarse a usted, su representante o una compañía de seguros o agencia. La información sobre la factura(cobro) puede contener información que lo identifica a usted y los servicios que recibe o ha recibido, Lighthouse Systems podrá utilizar su información para comunicarnos con usted acerca de los saldos de cuenta.</p>
+
+<p><u>Requerido por la ley,</u> Lighthouse Systems puede usar y divulgar información según lo requerido por la ley. Por ejemplo,
+<li>Para el procedimiento judicial y administrativo en virtud de la autoridad legal;</li>
+<li>Para reportar información relacionada a víctimas de abuso, negligencia o violencia doméstica,</li>
+<li>Ayudar a los funcionarios encargados de hacer cumplir la ley en sus funciones de aplicación de la ley.</li></p>
+
+<p><u>Servicio Incial y Futuro Servicios: </u>Lighthouse Systems puede comunicarse con usted para programar visitas al hogar para proporcionar servicios o prueba  rmensuales de su sistema. Cuando se realizan contactos vía telefónica, se dejará mensajes en su contestadora con información limitada.
+ </p>
+
+<p><u>Notificación: </u>Lighthouse Systems y socios de negocios (estación Central) pueden usar o divulgar información para notificar a un miembro de la familia, representante u otra persona responsable de su cuidado, su ubicación y condición general.</p>
+
+<p><u>Comunicación con la familia :</u> Lighthouse Systems y personal ejercen su mejor juicio y podran revelar a un miembro de la familia, pariente, amigo cecano o cualquier otra persona que usted identifique, información sobre su salud relacionado con la participación de esa persona en su atención o pago relacionados con servicios que recibió.  </p></div>
+
+<pre style="page-break-after:always;" id="pre">
+
+
+_____________________________________           _________________
+Firma                                                      Fecha
+</pre>
+
+<!-- pagebreak Subscriber Fact Sheet -->
+
+<pre id="pre" style "page-break-after:always"><div style="font-size:small"><b>Lighthouse Systems, LLC		SUBSCRIBER FACT SHEET
+1-866-232-0415				</b>Dealer Name: <b><u>Lighthouse Systems</u></b>
+	
+	CS Acct # ___<%= @customer.client_central_station_account_number %>_____________ Type: <b><u>PERS</u></b>__ Format: <b><u>Contact ID</u></b>
+	
+	Submitted by: ___Pat Smith___________ Date: ____________________
+
+Subscriber Name:  <%= customer_name %>						Sex: <%= @customer.sex %>
+
+Address 1:   <%= @customer.addresses.first.address_1 %>
+
+Address 2:   <%= @customer.addresses.first.address_2 %>
+
+City:  <%= @customer.addresses.first.city %>	ST: <%= @customer.addresses.first.state %>			ZIP:  <%= @customer.addresses.first.zip %>
+
+Location Phone: <%= @customer.addresses.first.phone %>		Language:  <%= @customer.language %>
+
+Add'l Directions: _________________________________________
+
+Gate/Lockbox/Key info: _____________________________________
+
+If contact is made with customer, follow customer’s verbal request. If no response or customer cannot be 
+understood, do not dispatch EMS yet, however do call the responder list and follow their instructions. If unable to 
+contact the responders or unable to get clear instructions from them, then dispatch EMS.
+
+  <u>Responder</u>			<u>Primary Phone # [type]</u>	<u>Alternate Phone # [type]</u>
+1. ________________________  ___________________[  ]  ___________________[  ]
+2. ________________________  ___________________[  ]  ___________________[  ]
+3. ________________________  ___________________[  ]  ___________________[  ]
+4. ________________________  ___________________[  ]  ___________________[  ]
+<b>IF MEDICAL EMERGENCY PERSONNEL ARE DISPATCHED, THE FOLLOWING
+ INFORMATION MUST BE GIVEN TO THEM.</b>
+Medical Conditions: ________________________________________________________________
+
+__________________________________________________________________________________
+
+Doctor Name & Phone:  ______________________________________________________________
+
+Hospital Preference: _________________________________________________________________
+
+Add’l Comments or Instructions: 
+
+Test call:  ___________________ Panel:______________________Transmitter________________ 
+
+PD __________________________________          FD  _____________________________________
+				</div></pre>
+<!-- pagebreak ERS responder acknowledgement 1 -->
+<h3><center>ERS RESPONDER ACKNOWLEDGMENT</center></h3>
+
+<pre id="pre" style="page-break-after:always">
+<div style = "font-size:small">CLIENT NAME: <%= customer_name %>
+
+CLIENT #: 					ACCT #:  <%= @customer.client_central_station_account_number %>
+
+
+I acknowledge that I am a responder for the above referenced client.  When called by the 
+Emergency Response Systems service provider, I am responsible for checking on the 
+client and taking any necessary action to insure the well- being of the client.
+
+__________________________________________________________
+Responder Name
+
+___________________________________________________________
+Phone # 1   (Home  Cell   Work) circle one
+
+
+___________________________________________________________
+Phone #2   (Home  Cell   Work) circle one
+
+
+
+
+______________________________________ 	_____________
+Signature							 	Date
+
+</div>
+<div style = "font-size:smaller">
+THE EQUIPMENT IS THE PROPERTY OF LIGHTHOUSE SYSTEMS, LLC
+EL EQUIPO ES PROPIEDAD DE LIGHTHOUSE SYSTEMS
+
+Lighthouse Systems
+3820 S Jackson Rd Unit A  
+Pharr TX  78577
+956-631-7016
+
+Fax: 956-682-4355
+Email:  Lighthousesystems1234@live.com
+</div>
+*Please fax, email or mail back within 1 week.</pre>
+
+<!-- pagebreak ERS responder acknowledgement 2 -->
+<h3><center>ERS RESPONDER ACKNOWLEDGMENT</center></h3>
+
+<pre id="pre" style="page-break-after:always">
+<div style = "font-size:small">CLIENT NAME: <%= customer_name %>
+
+CLIENT #: 					ACCT #:  <%= @customer.client_central_station_account_number %>
+
+
+I acknowledge that I am a responder for the above referenced client.  When called by the 
+Emergency Response Systems service provider, I am responsible for checking on the 
+client and taking any necessary action to insure the well- being of the client.
+
+__________________________________________________________
+Responder Name
+
+___________________________________________________________
+Phone # 1   (Home  Cell   Work) circle one
+
+
+___________________________________________________________
+Phone #2   (Home  Cell   Work) circle one
+
+
+
+
+______________________________________ 	_____________
+Signature							 	Date
+
+</div>
+<div style = "font-size:smaller">
+THE EQUIPMENT IS THE PROPERTY OF LIGHTHOUSE SYSTEMS, LLC
+EL EQUIPO ES PROPIEDAD DE LIGHTHOUSE SYSTEMS
+
+Lighthouse Systems
+3820 S Jackson Rd Unit A  
+Pharr TX  78577
+956-631-7016
+
+Fax: 956-682-4355
+Email:  Lighthousesystems1234@live.com
+</div>
+*Please fax, email or mail back within 1 week.</pre>
