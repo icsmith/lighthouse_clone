@@ -6,8 +6,8 @@
 
 <!-- search form -->
 <%= search_form_for @q do |f| %>
-	<%= f.label :first_name_or_last_name_cont %>
-	<%= f.search_field :first_name_or_last_name_cont %>
+	<%= f.label :first_name_or_last_name_or_account_number_cont %>
+	<%= f.search_field :first_name_or_last_name_or_client_central_station_account_number_cont %>
 	<%= f.submit %>
 <% end %>
 
@@ -20,6 +20,7 @@
 			<td>City</td>
 			<td>Region</td>
 			<td>Caseworker</td>
+			<td>Account Number</td>
 			<td>System type</td>
 			<td>Transponder Type</td>
 			<td>Billing Interval</td>
@@ -30,6 +31,7 @@
 				<td><%= link_to customer.addresses.first.city, edit_customer_path(customer) || "empty" %></td>
 				<td><%= (customer.region.region_name if customer.region) || "empty" %></td>
 				<td><%= ([customer.caseworker.first_name, customer.caseworker.last_name].join(' ') if customer.caseworker) || "empty" %></td>
+				<td><%= customer.client_central_station_account_number || "empty" %></td>
 				<td><%= (customer.system.system_type.system_type if customer.system )  || "empty" %></td>
 				<td><%= (customer.system.transponder_type.transponder_type if customer.system) || "empty" %></td>
 				<td><%= ([customer.billing_interval.billing_interval_name, customer.billing_interval.interval_month].join(' ') if customer.billing_interval) || "empty" %></td>

@@ -72,7 +72,7 @@ class CustomersController < ApplicationController
 	  	:initial_contact_autorization_date,
 	  	:caseworker_id, :region_id, :billing_interval_id,
 	  	addresses_attributes:[:address_1, :address_2, :city, :state, :id, :zip, :phone, :phone_2, :is_billing_address, :customer],
-	  	system_attributes:[:lock_number, :test_call_number, :batter_date, :transponder_date, :system_type_id, :transponder_type_id])
+	  	system_attributes:[:lock_number, :test_call_number, :battery_date, :transponder_date, :system_type_id, :transponder_type_id, :id])
 
 	end
 
