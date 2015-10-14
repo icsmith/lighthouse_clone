@@ -34,7 +34,7 @@
 				<td><%= customer.client_central_station_account_number || "empty" %></td>
 				<td><%= (customer.system.system_type.system_type if customer.system )  || "empty" %></td>
 				<td><%= (customer.system.transponder_type.transponder_type if customer.system) || "empty" %></td>
-				<td><%= ([customer.billing_interval.billing_interval_name, customer.billing_interval.interval_month].join(' ') if customer.billing_interval) || "empty" %></td>
+				<td><%= ((link_to [customer.billing_interval.billing_interval_name, customer.billing_interval.interval_month].join(' '), billing_intervals_path) if customer.billing_interval) || "empty" %></td>
 
 			</tr>
 		<%end %>
