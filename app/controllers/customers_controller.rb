@@ -66,12 +66,6 @@ class CustomersController < ApplicationController
 
 
 
-	def import
-	  Customer.import(params[:file])
-	  redirect_to customers_path, notice: "Customers imported."
-	end
-
-
 
 	private
 
