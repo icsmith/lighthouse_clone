@@ -64,6 +64,15 @@ class CustomersController < ApplicationController
 	def service_check_list
 	end
 
+
+
+	def import
+	  Customer.import(params[:file])
+	  redirect_to customers_path, notice: "Customers imported."
+	end
+
+
+
 	private
 
 	def customer_params

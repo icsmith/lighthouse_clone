@@ -23,13 +23,14 @@ Rails.application.routes.draw do
   # nested routes to allow /customers/:customer_id/addresses and /customers/:customer_id/insurances
   # allowed because address and insurance belong to customer
   resources :customers do
+    collection { post :import }
     resources :addresses, :insurances, :systems
   end
   resources :system_types, :transponder_types do
     resources :systems
   end
 
-  resources :caseworkers, :regions, :billing_intervals, :forms
+  resources :caseworkers, :regions, :billing_intervals, :forms, :customer_imports
 
   # Customer controller routes
 
