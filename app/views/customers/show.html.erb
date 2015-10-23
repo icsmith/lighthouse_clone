@@ -28,7 +28,7 @@ Address
 <% if @customer.caseworker %>
 Caseworker
 
-<%= link_to @customer.caseworker, @customer.caseworker %>
+<%= link_to @customer.caseworker.name, @customer.caseworker %>
 <%= @customer.caseworker.attributes %>
 <% end %>
 <br><br>
@@ -36,7 +36,7 @@ Caseworker
 <% if @customer.insurance %>
 insurance
 
-<%= link_to @customer.insurance, customer_insurance_path(@customer.id, @customer.insurance.id)%>
+<%= link_to @customer.insurance.insurance_name, customer_insurance_path(@customer.id, @customer.insurance.id)%>
 <%= @customer.insurance.attributes %>
 <% end %>
 <br><br>

@@ -51,13 +51,13 @@ class CaseworkersController < ApplicationController
 	end
 
 	def destroy
-		flash[:notice] = 'Destroyed '<<@caseworker.first_name
+		flash[:notice] = 'Destroyed '<<@caseworker.name
 		@caseworker.destroy
 		redirect_to caseworkers_path
 	end
 
 	def caseworker_params
-		params.require(:caseworker).permit(:first_name, :last_name, :phone, :fax, :customer_id)
+		params.require(:caseworker).permit(:name, :phone, :fax, :customer_id)
 	end
 
 end

@@ -30,7 +30,7 @@
 				<td><%= link_to [customer.first_name, customer.last_name].join(' '), customer%></td>
 				<td><%= (link_to customer.addresses.first.city, edit_customer_path(customer) if customer.addresses.first) || "empty" %></td>
 				<td><%= (customer.region.region_name if customer.region) || "empty" %></td>
-				<td><%= ([customer.caseworker.first_name, customer.caseworker.last_name].join(' ') if customer.caseworker) || "empty" %></td>
+				<td><%= (customer.caseworker.name if customer.caseworker) || "empty" %></td>
 				<td><%= customer.client_central_station_account_number || "empty" %></td>
 				<td><%= (customer.system.system_type.system_type if customer.system )  || "empty" %></td>
 				<td><%= (customer.system.transponder_type.transponder_type if customer.system) || "empty" %></td>
