@@ -1,0 +1,17 @@
+<h1><%= @region.region_name %></h1>
+
+<table>
+<thead>
+<td>Customer<td>
+</thead>
+<tbody>
+<% @region.customers.each do |c| %>
+<tr>
+<td><%= [c.first_name, c.last_name].join('')%></td>
+</tr>
+<% end %>
+</tbody>
+
+</table>
+
+<%= link_to "Delete this region", region_path(@region), method: :delete, data:{confirm: "Are you sure?"} %>

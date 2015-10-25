@@ -1,0 +1,6 @@
+select
+<%= simple_form_for @customer do |f| %>
+<%= f.association :caseworker, label_method: lambda { |c| "#{c.name}" }, value_method: :id %>
+<%= f.submit %>
+<% end %>
+<%= link_to "Create a new caseworker", new_caseworker_path %>

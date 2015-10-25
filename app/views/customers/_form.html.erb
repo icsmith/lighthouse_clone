@@ -1,0 +1,82 @@
+  <!-- A form for creating and updating customer info and addresses -->
+
+  <%= simple_form_for @customer do |f| %>
+    <ul>
+    <li><%= f.input :first_name %></li>
+    <li><%= f.input :middle_initial %></li>
+    <li><%= f.input :last_name %></li>
+    <li><%= f.collection_select :sex, [['M', 'Male'] ,['F', 'Female']], :first, :last %> </li>
+    <li><%= f.input :dob, as: :date, start_year: Date.today.year - 100,
+                                end_year: Date.today.year,
+                                order: [:month, :day, :year]  %> </li>
+    <li><%= f.input :language, collection: ['English','Spanish'] %></li>
+    <li><%= f.input :memo %></li>
+    <li><%= f.input :status%></li>
+    <li><%= f.input :status_note%></li>
+    <li><%= f.input :client_central_station_account_number, as: :string %></li>
+    <li><%= f.input :install_date, include_blank: true %></li>
+    <li><%= f.input :cancel_date, as: :date, include_blank: true, start_year: Date.today.year - 100,
+                                end_year: Date.today.year,
+                                order: [:month, :day, :year]%></li>
+    <li><%= f.input :initial_contact_autorization_date %></li>
+    <li><%= f.association :caseworker, label_method: lambda { |c| "#{c.name}"}, value_method: :id %></li>
+    <li><%= f.association :region, label_method: lambda { |c| "#{c.region_name}" }, value_method: :id %></li>
+    <li><%= f.association :billing_interval, label_method: lambda { |c| "#{c.billing_interval_name} #{c.interval_month}" } %></li>
+
+    </ul>
+
+  Addresses: <% index = 0 %>
+    <%= f.fields_for :addresses do |addresses_form| %>
+  <ul>
+        
+        <li><%= addresses_form.label :address_1 %>
+        <%= addresses_form.text_field :address_1 %></li>
+
+        <li><%= addresses_form.label :address_2 %>
+        <%= addresses_form.text_field :address_2 %></li>
+ 
+        <li><%= addresses_form.label :city %>
+        <%= addresses_form.text_field :city %></li>
+
+        <li><%= addresses_form.label :state %>
+        <%= addresses_form.text_field :state %></li>
+ 
+        <li><%= addresses_form.label :zip %>
+        <%= addresses_form.text_field :zip %></li>
+ 
+        <li><%= addresses_form.label :phone %>
+        <%= addresses_form.telephone_field :phone %></li>
+
+        <li><%= addresses_form.label :phone_2 %>
+        <%= addresses_form.telephone_field :phone_2 %></li>
+
+        <li><%= addresses_form.label :is_billing_address %>
+        <%= addresses_form.check_box :is_billing_address %></li>
+        <% if request.original_url.include? "edit" %>
+        <%= link_to "Delete this address", customer_address_path(@customer.id, @customer.addresses[index]), method: :delete, data: {confirm: "Are you sure?"} %>
+        <% end %>
+  </ul>
+    <% index += 1 %>
+    <% end %>
+    <p>System info</p>
+    <%= f.simple_fields_for :system do |system_form| %>
+    <ul>
+
+        <%=system_form.input :lock_number %>
+        <%=system_form.input :test_call_number %>
+        <%=system_form.input :battery_date %>
+        <%=system_form.input :transponder_date %>
+        <%=system_form.association :system_type, label_method: lambda { |c| "#{c.system_type}" }, value_method: :id%>
+        <%=system_form.association :transponder_type, label_method: lambda { |c| "#{c.transponder_type}" }, value_method: :id%>
+
+
+
+
+
+    </ul>
+    <% end %>
+
+    <%= f.button :submit %>
+
+
+<% end %>

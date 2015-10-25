@@ -1,0 +1,8 @@
+<%= link_to "Caseworkers", caseworkers_path %>
+<%= link_to "Customers", customers_path %>
+<% for attribute in @caseworker.attributes.keys %>
+<li><%= attribute.humanize %>: <%= @caseworker.attributes[attribute].to_s %></li>
+<% end %>
+
+<%= link_to "Edit this caseworker", edit_caseworker_path %>
+<%= link_to "Delete this caseworker", @caseworker, method: :delete, data: {confirm: "Are you sure?"} %>

@@ -1,0 +1,61 @@
+<!-- Display all customers -->
+<h1>Customers</h1>
+<%= link_to "Caseworkers", caseworkers_path %>
+<%= link_to "System types", system_types_path %>
+<%= link_to "Transponder types", transponder_types_path %>
+
+<!-- search form -->
+<%= search_form_for @q do |f| %>
+	<%= f.label :first_name_or_last_name_or_account_number_cont %>
+	<%= f.search_field :first_name_or_last_name_or_client_central_station_account_number_cont %>
+	<%= f.submit %>
+<% end %>
+
+<!-- search results -->
+	
+<% if @customers.present? %>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>City</td>
+			<td>Region</td>
+			<td>Caseworker</td>
+			<td>Account Number</td>
+			<td>System type</td>
+			<td>Transponder Type</td>
+			<td>Billing Interval</td>
+		</tr>
+		<% @customers.each do |customer| %>
+			<tr>
+				<td><%= link_to [customer.first_name, customer.last_name].join(' '), customer%></td>
+				<td><%= (link_to customer.addresses.first.city, edit_customer_path(customer) if customer.addresses.first) || "empty" %></td>
+				<td><%= (customer.region.region_name if customer.region) || "empty" %></td>
+				<td><%= (customer.caseworker.name if customer.caseworker) || "empty" %></td>
+				<td><%= customer.client_central_station_account_number || "empty" %></td>
+				<td><%= (customer.system.system_type.system_type if customer.system )  || "empty" %></td>
+				<td><%= (customer.system.transponder_type.transponder_type if customer.system) || "empty" %></td>
+				<td><%= ((link_to [customer.billing_interval.billing_interval_name, customer.billing_interval.interval_month].join(' '), billing_intervals_path) if customer.billing_interval) || "empty" %></td>
+
+			</tr>
+		<%end %>
+	</table>
+
+
+<!-- Failed search -->
+<% else %>
+	<p>There are no customers containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+
+<br><br>
+
+<!-- Add to the database -->
+<div id = "footer">
+	<%= link_to "Add New Customer", new_customer_path %>
+</div>
+
+
+
+<h2>Import Customers</h2>
+
+
+<p><%= link_to "Import customers", new_customer_import_path %></p>

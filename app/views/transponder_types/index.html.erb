@@ -1,0 +1,11 @@
+<h1>Transponder Types</h1>
+
+<table>
+	<% @trans_t.each do  |t| %>
+		<tr>
+		<td><%= link_to t.transponder_type, transponder_type_path(t) %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to "Add new transponder type", new_transponder_type_path %>

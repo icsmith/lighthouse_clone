@@ -10,15 +10,39 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resource :customers
-  resource :addresses
-  resource :caseworkers
-  resource :insurances
-  resource :systems
-  resource :system_types
-  resource :transponder_types
-  resource :regions
-  resource :billing_intervals
+  
+  get 'forms/:id/service_check_list', to: 'forms#service_check_list'
+  get 'forms/:id/account_shell_spanish', to: 'forms#account_shell_spanish'
+
+  get 'forms/:id/account_shell', to: 'forms#account_shell'
+  get 'forms/:id/update_info', to: 'forms#update_info'
+
+
+  get 'forms/generate_bills', to: 'forms#generate_bills'
+
+  # nested routes to allow /customers/:customer_id/addresses and /customers/:customer_id/insurances
+  # allowed because address and insurance belong to customer
+  resources :customers do
+    collection { post :import }
+    resources :addresses, :insurances, :systems
+  end
+  resources :system_types, :transponder_types do
+    resources :systems
+  end
+
+  resources :caseworkers, :regions, :billing_intervals, :forms, :customer_imports
+
+  # Customer controller routes
+
+  # get 'customers/:id/destroy' => 'customers#destroy', :as => :customer_destroy  DON'T DO THIS. EXPOSES OUR DB WITH GET
+
+  # Caseworkers controller routes
+
+  get 'customers/:id/select' => 'customers#select', :as => :select_caseworker
+
+  # Billing Interval controller routes
+
+  post 'billing_intervals/select_billings', to: 'billing_intervals#select_billings'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
