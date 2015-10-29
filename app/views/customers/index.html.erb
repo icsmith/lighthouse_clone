@@ -14,7 +14,7 @@
 <% if @customers.present? %>
 	<table>
 		<tr>
-			<td>Name</td>
+			<td><%= sort_link(@q, :first_name) %></td>
 			<td>City</td>
 			<td>Region</td>
 			<td>Caseworker</td>
