@@ -1,10 +1,10 @@
 <div id = "all">
 	<div id = "title"><p><center>SERVICE CHECK LIST #</center></p>
 
-		<p><center>Date of Call: <textarea></textarea></center></p>
+		<p><center>Date of Call: <%= Date.today %></center></p>
 	</div>
 
-	<div id = "body">
+	<div id = "body" style = "font-size: small;">
 		<p><div id= "left">Customer Name: <%= @customer.first_name << " " << @customer.last_name %></div>
 
 			<div id = "right"> Language: <%= @customer.language %></p>
@@ -14,8 +14,8 @@
 
 						<% @customer.addresses.each do |address| %>
 						<div id= "left">
-							<%= address.address_1<<" "<<address.address_2<<" "<<address.city<<" "<<address.state<<" "<<address.zip %> </div>
-						<p><div id= "left">Phone #:<%= address.phone %>; <%= address.phone_2%></div></p>
+							<%= [address.address_1,address.address_2].join(' ') %>, <%= [address.city,address.state,address.zip].join(', ') %></div>
+						<div id= "left">Phone #:<%= address.phone %>; <%= address.phone_2%></div>
 
 						<% end %>
 					</p>

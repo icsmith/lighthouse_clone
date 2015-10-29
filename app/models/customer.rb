@@ -1,8 +1,8 @@
 class Customer < ActiveRecord::Base
 	validates :first_name, :last_name, :sex, :dob, :status, presence: true
-	validates_uniqueness_of :first_name, :scope => :last_name
+	validates :first_name, uniqueness: {scope: :last_name}
 
-	has_one :system
+	has_one :system, dependent: :destroy
 	has_one :insurance, dependent: :destroy
 	has_many :addresses, dependent: :destroy
 	belongs_to :caseworker
