@@ -8,6 +8,8 @@
 
 <table>	
 <tr>
+	<td>Customer </td>
+	<td>Account Number </td>
 	<td>System type</td>
 	<td>Transponder type</td>
 	<td>Lock Number</td>
@@ -17,6 +19,8 @@
 </tr>
 <% @sys_t.systems.each do |s| %>
 <tr>
+	<td> <%= link_to [s.customer.first_name, s.customer.last_name].join(' '), customer_path(s.customer) %></td>
+	<td> <%= s.customer.client_central_station_account_number %></td>
 	<td> <%= s.system_type.system_type %></td>
 	<td> <%= s.transponder_type.transponder_type %></td>
 

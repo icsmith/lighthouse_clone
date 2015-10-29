@@ -7,7 +7,7 @@
 <tbody>
 <% @region.customers.each do |c| %>
 <tr>
-<td><%= [c.first_name, c.last_name].join('')%></td>
+<td><%= link_to [c.first_name, c.last_name].join(' '), customer_path(c)%></td>
 </tr>
 <% end %>
 </tbody>

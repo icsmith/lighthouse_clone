@@ -1,4 +1,5 @@
 class FormsController < ApplicationController
+	layout false
 	before_action :authenticate_admin!
 	before_action :lookup_customer, only:[:service_check_list, :account_shell_spanish,:account_shell, :update_info]
 	def service_check_list

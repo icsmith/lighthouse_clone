@@ -68,6 +68,9 @@ class CustomerImport
         customer.build_insurance
       end
       customer.attributes =  row.to_hash.select { |k,v| @allowed_attributes.include? k }
+      customer.memo = [customer.memo, row["temp"]].join(' ')
+      customer.addresses.second || customer.addresses.build
+      customer.addresses.second.update(address_1: row["BADD1"], address_2: row["BADD2"], city: row["BCITY"], state: row["BST"], zip: row["BZIP"], phone: row["phone"], is_billing_address: true)
       customer.addresses.first.attributes = row.to_hash.select { |k,v| @allowed_attributes_address.include? k }
       customer.region_id = region.id
       customer.caseworker_id=caseworker.id
