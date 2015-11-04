@@ -89,6 +89,9 @@ class CustomerImport
       customer.system.assign_attributes(system_type_id: system_type.id, transponder_type_id: transponder_type.id)
       customer.system.attributes = row.to_hash.select { |k,v| @allowed_attributes_system.include? k }
       customer.insurance.attributes = row.to_hash.select { |k,v| @allowed_attributes_insurance.include? k }
+      unless "p".in? customer.insurance.medicaid_number.downcase
+        customer.billing_interval = BillingInterval.find_by_billing_interval_name("Monthly")
+      end
       customer
     end
   end

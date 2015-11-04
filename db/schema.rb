@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023172436) do
+ActiveRecord::Schema.define(version: 20151104213418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20151023172436) do
     t.string   "insurance_name",   null: false
     t.string   "diagnostics_code"
     t.string   "venue"
-    t.integer  "medicaid_number"
+    t.string   "medicaid_number"
     t.date     "isp_end_date"
     t.integer  "customer_id",      null: false
     t.datetime "created_at",       null: false
