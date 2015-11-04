@@ -56,12 +56,13 @@ class CustomerImport
       else
         customer = Customer.new
       end
+      #lookup related tables for a match, or create a new entry
       system_type = SystemType.find_by_system_type(row["system_type"]) || SystemType.create(system_type: (row["system_type"].upcase || "Unspecified"))
       transponder_type = TransponderType.find_by_transponder_type(row["transponder_type"]) || TransponderType.create(transponder_type: (row["transponder_type"].upcase || "Unspecified"))
-
       region = Region.find_by_region_name(row["region_name"]) || Region.create(region_name: row["region_name"])
       caseworker = Caseworker.find_by_name(row["caseworker"]) || Caseworker.create(name: row["caseworker"],phone: row["cw phone"], fax: row["cw fax"])
       insurance = Insurance.find_by_insurance_name(row["insurance_name"]) || customer.build_insurance
+      #build related tables for customer if they are missing
       unless customer.addresses.first
         customer.addresses.build
       end
@@ -76,7 +77,7 @@ class CustomerImport
       end
       customer.assign_attributes(row.to_hash.select { |k,v| @allowed_attributes.include? k })
       customer.memo = [customer.memo, row["temp"]].join(' ')
-      
+      #had to use different logic depending on the existence of the customer. customer.id is true if we found a customer, not if we just created one.
       if customer.id?
         customer.addresses.first.update(row.to_hash.select { |k,v| @allowed_attributes_address.include? k })
         customer.addresses.second.update(address_1: row["BADD1"], address_2: row["BADD2"], city: row["BCITY"], state: row["BST"], zip: row["BZIP"], phone: row["phone"], is_billing_address: true)
@@ -84,14 +85,17 @@ class CustomerImport
         customer.addresses.first.assign_attributes(row.to_hash.select { |k,v| @allowed_attributes_address.include? k })
         customer.addresses.second.assign_attributes(address_1: row["BADD1"], address_2: row["BADD2"], city: row["BCITY"], state: row["BST"], zip: row["BZIP"], phone: row["phone"], is_billing_address: true)
       end
+      #strange import bug on zip
       customer.addresses.each do |a|
         a.zip = a.zip.split('.').first
       end
+      #assign foreign keys
       customer.region_id = region.id
       customer.caseworker_id=caseworker.id
       customer.system.assign_attributes(system_type_id: system_type.id, transponder_type_id: transponder_type.id)
       customer.system.attributes = row.to_hash.select { |k,v| @allowed_attributes_system.include? k }
       customer.insurance.attributes = row.to_hash.select { |k,v| @allowed_attributes_insurance.include? k }
+      #check for private customer. Private customers will have "private" as their medicaid number, and are not billed monthly
       unless "p".in? customer.insurance.medicaid_number.downcase
         customer.billing_interval = BillingInterval.find_by_billing_interval_name("Monthly")
       end

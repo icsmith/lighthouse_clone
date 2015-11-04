@@ -1,62 +1,53 @@
-<div id = "all">
+
 	<div id = "title"><p><center>SERVICE CHECK LIST #</center></p>
 
 		<p><center>Date of Call: <%= Date.today %></center></p>
 	</div>
 
-	<div id = "body" style = "font-size: small;">
-		<p><div id= "left">Customer Name: <%= @customer.first_name << " " << @customer.last_name %></div>
 
-			<div id = "right"> Language: <%= @customer.language %></p>
-				Central Station #: <%= @customer.client_central_station_account_number %></div>
-				<p>
-					Address: 
+		
+<pre><div id = "pre">
+Customer Name: <%= @customer.first_name << " " << @customer.last_name %>			Language: <%= @customer.language %>
 
-						<% @customer.addresses.each do |address| %>
-						<div id= "left">
-							<%= [address.address_1,address.address_2].join(' ') %>, <%= [address.city,address.state,address.zip].join(', ') %></div>
-						<div id= "left">Phone #:<%= address.phone %>; <%= address.phone_2%></div>
+Address: <% @customer.addresses.each do |address| %><% unless address.is_billing_address %><%= [address.address_1,address.address_2].join(' ') %>, <%= [address.city,address.state,address.zip].join(', ') %>
 
-						<% end %>
-					</p>
+Phone #:<%= address.phone %>; <%= address.phone_2%><% end %><% end %>				Central Station #: <%= @customer.client_central_station_account_number %>
 
+System: <%= @customer.system.system_type.system_type  if @customer.system %>			Batt: <%= @customer.system.battery_date if @customer.system%>			Inst Date: <%= @customer.install_date %>
 
-					<p><div id = "left">System: <%= @customer.system.lock_number  if @customer.system %></div>
-						<center>Batt: <%= @customer.system.battery_date if @customer.system%></center>
-						<div id = "right">Inst Date: <%= @customer.install_date %></div></p>
+<div id = "title"><center>REPAIRS</center></div>
 
-						<div id = "title"><center>REPAIRS</center></div>
+Nature of Problem:
 
-						<div id= "left">
-							<p>Nature of Problem:</p>
-							<p>Comments: <%= @customer.memo %></p>
+Comments: <%= @customer.memo %>
 
-							<p>Responders:</p>
+Responders:
 
-						</div>
-					</div>
+Tested to Central Station:______
 
-					<div id= "left">Tested to Central Station:______</div>
+<div id = "title"><center>REMOVAL</center></div>
+Recovered console  ______ 				Recovered transmitter ______ 
 
-					<div id = "title"><center>REMOVAL</center></div>
+Outlet cover screwed in ______ 				Phone plugged in/working ______
 
-					<div id = "left">
-						<p>Recovered console  ______  			</p>
-						<p>Outlet cover screwed in ______</p>
-						<p>Misc Parts recovered _________________</p>
-					</div>
-					<div id = "right">
-						<p>Recovered transmitter ______ 		</p>
-						<p>Phone plugged in/working ______</p>
-						<p>New console acct # _____________</p>
-					</div>
-					<div id = "payment"><div id = "right"><p>PAYMENT CALC: &nbsp; Service Call &nbsp; ___________________________</p>
-						<p>Mileage &nbsp; _____ x.30 &nbsp; ___________________________</p>
-						<p>Parts &nbsp; ___________________________</p>
-						<p>Postage  &nbsp; ___________________________</p>
-						<p>TOTAL   &nbsp; ___________________________</p></div></div>
+Misc Parts recovered __________________________ 	New console acct # _____________
+
+		
+
+		PAYMENT CALC:   	Service Call   		___________________________
+					
+					Mileage   _____ x.30   	___________________________
+					
+					Parts   		___________________________
+					
+					Postage    		___________________________
+					
+					TOTAL     		___________________________
 
 
-						<div id = "left"><p>Tech Signature ______________________________  Date ______________</p></div>
 
-					</div>
+ Tech Signature ______________________________  Date ______________
+</div>
+</pre>
+
+
