@@ -84,6 +84,9 @@ class CustomerImport
         customer.addresses.first.assign_attributes(row.to_hash.select { |k,v| @allowed_attributes_address.include? k })
         customer.addresses.second.assign_attributes(address_1: row["BADD1"], address_2: row["BADD2"], city: row["BCITY"], state: row["BST"], zip: row["BZIP"], phone: row["phone"], is_billing_address: true)
       end
+      customer.addresses.each do |a|
+        a.zip = a.zip.split('.').first
+      end
       customer.region_id = region.id
       customer.caseworker_id=caseworker.id
       customer.system.assign_attributes(system_type_id: system_type.id, transponder_type_id: transponder_type.id)
