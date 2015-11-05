@@ -26,12 +26,12 @@
 		<% @customers.each do |customer| %>
 			<tr>
 				<td><%= link_to [customer.first_name, customer.last_name].join(' '), customer%></td>
-				<td><%= (link_to customer.addresses.first.city, edit_customer_path(customer) if customer.addresses.first) || "empty" %></td>
-				<td><%= (customer.region.region_name if customer.region) || "empty" %></td>
-				<td><%= (customer.caseworker.name if customer.caseworker) || "empty" %></td>
+				<td><%= (customer.addresses.first.city if customer.addresses.first) || "empty" %></td>
+				<td><%= ((link_to customer.region.region_name, customer.region )if customer.region) || "empty" %></td>
+				<td><%= ((link_to customer.caseworker.name, customer.caseworker) if customer.caseworker) || "empty" %></td>
 				<td><%= customer.client_central_station_account_number || "empty" %></td>
-				<td><%= (customer.system.system_type.system_type if customer.system )  || "empty" %></td>
-				<td><%= (customer.system.transponder_type.transponder_type if customer.system) || "empty" %></td>
+				<td><%= ((link_to customer.system.system_type.system_type, customer.system.system_type) if customer.system )  || "empty" %></td>
+				<td><%= ((link_to customer.system.transponder_type.transponder_type, customer.system.transponder_type) if customer.system) || "empty" %></td>
 				<td><%= ((link_to [customer.billing_interval.billing_interval_name, customer.billing_interval.interval_month].join(' '), billing_intervals_path) if customer.billing_interval) || "empty" %></td>
 
 			</tr>
