@@ -1,6 +1,6 @@
 class Customer < ActiveRecord::Base
 	validates :first_name, :last_name, :sex, :dob, :status, presence: true
-	validates :first_name, uniqueness: {scope: :last_name}
+	validates :first_name, uniqueness: {scope: [:last_name, :dob], message: "This customer already exists (first, last, dob)"}
 
 	has_one :system, dependent: :destroy
 	has_one :insurance, dependent: :destroy

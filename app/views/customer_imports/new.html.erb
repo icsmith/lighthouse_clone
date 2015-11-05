@@ -1,19 +1,9 @@
 <h1>Customer Import</h1>
 
-<p>A CSV or Excel file can be used to import records. The first row should be the column name. The following columns are allowed.</p>
+<p>An Excel file can be used to import records. The first row should be the column name. </p>
 
-<ul>
-  <% Customer.columns.each do |column| %>
-    <% if column.name.in? ["id", @allowed_attributes] %>
-      <li>
-        <strong><%= column.name %></strong> -
-        <%= column.type.to_s.titleize %> type
-      </li>
-    <% end %>
-  <% end %>
-</ul>
 
-<p>If an <strong>id</strong> is supplied it will update the matching record instead of creating a new one.</p>
+<p>If <strong>first name, last name, and dob</strong> are supplied it will update the matching record instead of creating a new one.</p>
 
 <%= form_for @customer_import do |f| %>
   <% if @customer_import.errors.any? %>
