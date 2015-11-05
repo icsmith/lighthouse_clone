@@ -1,9 +1,14 @@
 <h1>Transponder Types</h1>
 
 <table>
+	<thead>
+		<td>Transponder type</td>
+		<td># of customers</td>
+	</thead>
 	<% @trans_t.each do  |t| %>
 		<tr>
 		<td><%= link_to t.transponder_type, transponder_type_path(t) %></td>
+		<td><%= t.systems.count %></td>
 		</tr>
 	<% end %>
 </table>

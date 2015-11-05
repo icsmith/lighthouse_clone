@@ -1,9 +1,14 @@
 <h1>System Types</h1>
 
 <table>
+	<thead>
+		<td>System type</td>
+		<td># of customers</td>
+	</thead>
 	<% @sys_t.each do  |s| %>
 		<tr>
 		<td><%= link_to s.system_type, system_type_path(s) %></td>
+		<td><%= s.systems.count %></td>
 		</tr>
 	<% end %>
 </table>

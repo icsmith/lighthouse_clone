@@ -39,7 +39,7 @@ class CustomerImport
   def load_imported_customers
     @allowed_attributes = [ "first_name", "last_name", "middle_initial", "sex", "dob", 
       "client_central_station_account_number", "language","memo","status_note",
-      "install_date", "cancel_date", "initial_contact_autorization_date"]
+      "install_date", "cancel_date", "initial_contact_authorization_date"]
     @allowed_attributes_insurance = ["venue", "isp_end_date",
       "medicaid_number", "diagnostics_code", "insurance_name"]
     @allowed_attributes_address = ["address_1", "address_2", "city", "state", "zip", "phone"]
@@ -57,8 +57,8 @@ class CustomerImport
         customer = Customer.new
       end
       #lookup related tables for a match, or create a new entry
-      system_type = SystemType.find_by_system_type(row["system_type"]) || SystemType.create(system_type: (row["system_type"].upcase || "Unspecified"))
-      transponder_type = TransponderType.find_by_transponder_type(row["transponder_type"]) || TransponderType.create(transponder_type: (row["transponder_type"].upcase || "Unspecified"))
+      system_type = SystemType.find_by_system_type(row["system_type"].upcase) || SystemType.create(system_type: (row["system_type"].upcase || "Unspecified"))
+      transponder_type = TransponderType.find_by_transponder_type(row["transponder_type"].titleize) || TransponderType.create(transponder_type: (row["transponder_type"].titleize || "Unspecified"))
       region = Region.find_by_region_name(row["region_name"]) || Region.create(region_name: row["region_name"])
       caseworker = Caseworker.find_by_name(row["caseworker"]) || Caseworker.create(name: row["caseworker"],phone: row["cw phone"], fax: row["cw fax"])
       insurance = Insurance.find_by_insurance_name(row["insurance_name"]) || customer.build_insurance
