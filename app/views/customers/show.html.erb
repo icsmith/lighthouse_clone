@@ -1,18 +1,21 @@
 <!-- Show details of particular customer -->
 
 
+<li>Customer name: <%= [@customer.first_name, @customer.middle_initial, @customer.last_name].join(' ') %></li>
+<li>Sex: <%= @customer.sex %></li>
+<li>Dob: <%= @customer.dob.to_formatted_s(:long_ordinal)%></li>
+<li>Language: <%= @customer.language %></li>
+<li>Memo: <%= @customer.memo %></li>
+<li>Status: <%= @customer.status %></li>
+<li>Status note: <%= @customer.status_note %></li>
+<li>Account #: <%= @customer.client_central_station_account_number %></li>
+<li>Install date: <%= @customer.install_date.to_formatted_s(:long_ordinal) if @customer.install_date %></li>
+<li>Cancel date: <%= @customer.cancel_date.to_formatted_s(:long_ordinal) if @customer.cancel_date %></li>
+<li>Initial contact authorization date: <%= @customer.initial_contact_authorization_date.to_formatted_s(:long_ordinal) %></li>
+<li>Region: <%= @customer.region.region_name if @customer.region %></li>
+<li>Billing interval: <%= [@customer.billing_interval.billing_interval_name, @customer.billing_interval.interval_month].join(', ') if @customer.billing_interval %></li>
 
-<!-- Outputs customer info -->
-<% for attribute in @customer.attributes.keys %>
-	<%unless @customer.attributes[attribute]%>
-	<i><b>
-	<%end%>
-  <li><%= attribute.humanize %>: <%= @customer.attributes[attribute].to_s %>
-  <%unless @customer.attributes[attribute]%>
-	Missing</i></b>
-	<%end%></li>
-<% end %>
-<br>
+
 
 <!-- Dumps address info. Need to make nicer -->
 <% @customer.addresses.each do |a| %>

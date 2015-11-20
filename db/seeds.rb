@@ -26,4 +26,8 @@ BillingInterval.create(billing_interval_name: 'Quarterly', interval_month: '4')
 
 BillingInterval.create(billing_interval_name: 'Monthly', interval_month: '1')
 
+Caseworker.create(name: 'Unassigned', phone: '0000000000', fax: '0000000000')
+
+SystemType.create(system_type: 'Unassigned')
+TransmitterType.create(transmitter_type: 'Unassigned')
 
