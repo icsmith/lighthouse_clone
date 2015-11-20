@@ -1,8 +1,8 @@
-<!-- transponder type show page -->
+<!-- transmitter type show page -->
 <!-- Consider changing hard coded types to attributes calls -->
-<h1><%= @trans_t.transponder_type %></h1>
-<%= link_to "Edit transponder name", edit_transponder_type_path(@trans_t) %>
-<%= link_to "Destroy this transponder type", transponder_type_path(@trans_t), method: :delete, data: {confirm: "Are you sure?"} %>
+<h1><%= @trans_t.transmitter_type %></h1>
+<%= link_to "Edit transmitter name", edit_transmitter_type_path(@trans_t) %>
+<%= link_to "Destroy this transmitter type", transmitter_type_path(@trans_t), method: :delete, data: {confirm: "Are you sure?"} %>
 
 <!-- Consider making partial for system table -->
 <table>
@@ -10,23 +10,23 @@
 	<td>Customer </td>
 	<td>Account Number </td>
 	<td>System type</td>
-	<td>Transponder type</td>
+	<td>Transmitter type</td>
 	<td>Lock Number</td>
 	<td>Test Call Number</td>
 	<td>Battery Date</td>
-	<td>Transponder Date</td>
+	<td>Transmitter Date</td>
 </tr>
 <% @trans_t.systems.each do |t| %>
 <tr>
 	<td> <%= link_to [t.customer.first_name, t.customer.last_name].join(' '), customer_path(t.customer) %></td>
 	<td> <%= t.customer.client_central_station_account_number %></td>
 	<td> <%= t.system_type.system_type %></td>
-	<td> <%= t.transponder_type.transponder_type %></td>
+	<td> <%= t.transmitter_type.transmitter_type %></td>
 
 	<td> <%= t.lock_number || "empty" %> </td>
     <td> <%= t.test_call_number || "empty" %> </td>
     <td> <%= t.battery_date || "empty" %> </td>
-    <td> <%= t.transponder_date || "empty" %> </td>
+    <td> <%= t.transmitter_date || "empty" %> </td>
 </tr>
 <% end %>
 

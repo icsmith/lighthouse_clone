@@ -20,7 +20,7 @@
 			<td>Caseworker</td>
 			<td><%= sort_link(@q, :client_central_station_account_number, "Account Number") %></td>
 			<td>System type</td>
-			<td>Transponder Type</td>
+			<td>Transmitter Type</td>
 			<td>Billing Interval</td>
 		</tr>
 		<% @customers.each do |customer| %>
@@ -31,7 +31,7 @@
 				<td><%= ((link_to customer.caseworker.name, customer.caseworker) if customer.caseworker) || "empty" %></td>
 				<td><%= customer.client_central_station_account_number || "empty" %></td>
 				<td><%= ((link_to customer.system.system_type.system_type, customer.system.system_type) if customer.system )  || "empty" %></td>
-				<td><%= ((link_to customer.system.transponder_type.transponder_type, customer.system.transponder_type) if customer.system) || "empty" %></td>
+				<td><%= ((link_to customer.system.transmitter_type.transmitter_type, customer.system.transmitter_type) if customer.system) || "empty" %></td>
 				<td><%= ((link_to [customer.billing_interval.billing_interval_name, customer.billing_interval.interval_month].join(' '), billing_intervals_path) if customer.billing_interval) || "empty" %></td>
 
 			</tr>

@@ -1,0 +1,6 @@
+<!-- Form for filling out TransmitterType object -->
+<%= simple_form_for @trans_t do |f| %>
+<%= f.input :transmitter_type %>
+<%= f.submit %>
+<% end %>
+<%= link_to "Back to Transmitter Types", transmitter_types_path %>

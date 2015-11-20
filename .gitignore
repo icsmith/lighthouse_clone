@@ -13,3 +13,4 @@
 /tmp
 /config/secrets.development.yml
 /config/database.yml
+*~

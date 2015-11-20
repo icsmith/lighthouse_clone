@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :transponder_type do
+  factory :transmitter_type do
     
   end
 

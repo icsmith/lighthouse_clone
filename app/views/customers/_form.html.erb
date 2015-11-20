@@ -65,9 +65,9 @@
         <%=system_form.input :lock_number %>
         <%=system_form.input :test_call_number %>
         <%=system_form.input :battery_date %>
-        <%=system_form.input :transponder_date %>
+        <%=system_form.input :transmitter_date %>
         <%=system_form.association :system_type, label_method: lambda { |c| "#{c.system_type}" }, value_method: :id%>
-        <%=system_form.association :transponder_type, label_method: lambda { |c| "#{c.transponder_type}" }, value_method: :id%>
+        <%=system_form.association :transmitter_type, label_method: lambda { |c| "#{c.transmitter_type}" }, value_method: :id%>
 
 
 

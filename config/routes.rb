@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     collection { post :import }
     resources :addresses, :insurances, :systems
   end
-  resources :system_types, :transponder_types do
+  resources :system_types, :transmitter_types do
     resources :systems
   end
 

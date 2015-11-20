@@ -43,7 +43,7 @@ class CustomerImport
     @allowed_attributes_insurance = ["venue", "isp_end_date",
       "medicaid_number", "diagnostics_code", "insurance_name"]
     @allowed_attributes_address = ["address_1", "address_2", "city", "state", "zip", "phone"]
-    @allowed_attributes_system = ["lock_number", "test_call_number", "battery_date", "transponder_date"]
+    @allowed_attributes_system = ["lock_number", "test_call_number", "battery_date", "transmitter_date"]
 
     spreadsheet = open_spreadsheet
     header = spreadsheet.row(1)
@@ -58,7 +58,7 @@ class CustomerImport
       end
       #lookup related tables for a match, or create a new entry
       system_type = SystemType.find_by_system_type(row["system_type"].upcase) || SystemType.create(system_type: (row["system_type"].upcase || "Unspecified"))
-      transponder_type = TransponderType.find_by_transponder_type(row["transponder_type"].titleize) || TransponderType.create(transponder_type: (row["transponder_type"].titleize || "Unspecified"))
+      transmitter_type = TransmitterType.find_mitteansponder_type(row["transmitter_type"].titleize) || TransmitterType.create(transmitter_type: (row["transmitter_type"].titleize || "Unspecified"))
       region = Region.find_by_region_name(row["region_name"]) || Region.create(region_name: row["region_name"])
       caseworker = Caseworker.find_by_name(row["caseworker"]) || Caseworker.create(name: row["caseworker"],phone: row["cw phone"], fax: row["cw fax"])
       insurance = Insurance.find_by_insurance_name(row["insurance_name"]) || customer.build_insurance
@@ -92,7 +92,7 @@ class CustomerImport
       #assign foreign keys
       customer.region_id = region.id
       customer.caseworker_id=caseworker.id
-      customer.system.assign_attributes(system_type_id: system_type.id, transponder_type_id: transponder_type.id)
+      customer.system.assign_attributes(system_type_id: system_type.id, transmitter_type_id: transmitter_type.id)
       customer.system.attributes = row.to_hash.select { |k,v| @allowed_attributes_system.include? k }
       customer.insurance.attributes = row.to_hash.select { |k,v| @allowed_attributes_insurance.include? k }
       #check for private customer. Private customers will have "private" as their medicaid number, and are not billed monthly

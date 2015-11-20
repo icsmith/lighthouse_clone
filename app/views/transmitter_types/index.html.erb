@@ -1,0 +1,17 @@
+<h1>Transmitter Types</h1>
+
+<table>
+	<thead>
+		<td>Transmitter type</td>
+		<td># of customers</td>
+	</thead>
+	<% @trans_t.each do  |t| %>
+		<tr>
+		<td><%= link_to t.transmitter_type, transmitter_type_path(t) %></td>
+		<td><%= t.systems.count %></td>
+		</tr>
+	<% end %>
+</table>
+<div id = "footer">
+<%= link_to "Add new transmitter type", new_transmitter_type_path %>
+</div>

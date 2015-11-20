@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105231736) do
+ActiveRecord::Schema.define(version: 20151120163327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,16 +115,16 @@ ActiveRecord::Schema.define(version: 20151105231736) do
     t.string   "lock_number"
     t.string   "test_call_number"
     t.date     "battery_date"
-    t.date     "transponder_date"
+    t.date     "transmitter_date"
     t.integer  "system_type_id",      null: false
-    t.integer  "transponder_type_id", null: false
+    t.integer  "transmitter_type_id", null: false
     t.integer  "customer_id",         null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
 
-  create_table "transponder_types", force: :cascade do |t|
-    t.string   "transponder_type", null: false
+  create_table "transmitter_types", force: :cascade do |t|
+    t.string   "transmitter_type", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
